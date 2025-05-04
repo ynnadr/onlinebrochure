@@ -1,1 +1,52 @@
+# Nama Workflow (akan muncul di tab Actions GitHub)
+name: Deploy Website to Shared Hosting via FTP
 
+# Kapan workflow ini dijalankan?
+on:
+  push:
+    branches:
+      - main  # Ganti 'main' jika branch utama Anda namanya lain (misalnya 'master')
+
+# Pekerjaan (jobs) yang akan dilakukan
+jobs:
+  ftp-deploy:
+    name: FTP Deploy Job
+    runs-on: ubuntu-latest # Menggunakan mesin virtual Ubuntu terbaru dari GitHub
+
+    steps:
+    # Langkah 1: Mengambil kode dari repositori Anda
+    - name: Checkout code
+      uses: actions/checkout@v4 # Action standar untuk checkout kode
+
+    # Langkah 2: Melakukan deployment menggunakan FTP Action
+    - name: FTP Deploy Action
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.4 # Action untuk FTP/SFTP
+      with:
+        # Kredensial dari GitHub Secrets yang Anda buat
+        server: ${{ secrets.FTP_SERVER }}
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+
+        # --- OPSI TAMBAHAN (Sesuaikan jika perlu) ---
+
+        # Jika menggunakan SFTP (biasanya port 22)
+        # protocol: ftps # Bisa juga 'ftp' (default)
+        # port: 22 # Ganti jika port SFTP/FTP Anda berbeda dari standar (21 untuk FTP, 22 untuk SFTP)
+        # sftp: true # Set ke true jika menggunakan SFTP
+
+        # Jika file website Anda tidak ada di root repo, tapi di subfolder (misalnya 'dist' atau 'build')
+        # local-dir: ./dist/  # Sesuaikan dengan nama folder Anda
+
+        # Direktori tujuan di server hosting Anda (root website)
+        # Biasanya 'public_html', 'htdocs', 'www', atau sejenisnya. Cek di hosting Anda.
+        # Jika tidak diisi, akan diupload ke root direktori login FTP Anda.
+        server-dir: /public_html/ # <-- PENTING: Sesuaikan ini!
+
+        # Opsi lain (opsional, lihat dokumentasi Action untuk detail):
+        # exclude: | # File/folder yang tidak ingin diupload
+        #   **/.git*
+        #   **/.git*/**
+        #   **/node_modules/**
+        #   .github/
+        # cleanup: true # Menghapus file di server yang tidak ada di repo (hati-hati!)
+        # timeout: 30000 # Waktu tunggu (ms)
