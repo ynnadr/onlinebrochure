@@ -40,7 +40,7 @@ jobs:
         # Direktori tujuan di server hosting Anda (root website)
         # Biasanya 'public_html', 'htdocs', 'www', atau sejenisnya. Cek di hosting Anda.
         # Jika tidak diisi, akan diupload ke root direktori login FTP Anda.
-        server-dir: /home/negerise/public_html/testing/ # <-- PENTING: Sesuaikan ini!
+        server-dir: /public_html/testing/ # <-- PENTING: Sesuaikan ini!
 
         # Opsi lain (opsional, lihat dokumentasi Action untuk detail):
         # exclude: | # File/folder yang tidak ingin diupload
