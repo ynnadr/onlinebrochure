@@ -1,4 +1,7 @@
-/* --- Basic Reset & Font --- */
+/* --- Google Font Import --- */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@600;700&display=swap');
+
+/* --- Basic Reset & Global Settings --- */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -6,18 +9,38 @@
 }
 
 html {
-    scroll-padding-top: 100px; /* Adjust based on sticky header height */
-     scroll-behavior: smooth; /* Optional: smooth scroll for internal links */
+    /* Adjust value based on final sticky header height if needed */
+    scroll-padding-top: 100px;
+    scroll-behavior: smooth; /* Smooth scroll for internal links */
 }
 
-
 body {
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-    line-height: 1.6;
+    font-family: 'Lato', Arial, sans-serif; /* Default body font */
+    line-height: 1.7; /* Slightly increased line-height for readability */
     color: #333;
     background-color: #f4f4f4;
-    /* Remove potential overflow issues for sticky header */
-    /* overflow-x: hidden; potentially remove if causing issues */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif; /* Heading font */
+    font-weight: 700; /* Bold headings */
+    line-height: 1.3;
+    color: #2c6e2e; /* Dark green for headings */
+}
+
+h2 { /* Main section titles */
+    font-size: 1.9em;
+    color: #4CAF50; /* Brighter green for main titles */
+    margin-bottom: 25px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+h3 { /* Sub-section titles like Logistics */
+    font-size: 1.4em;
+    margin-bottom: 15px;
+    color: #388E3C; /* Slightly darker green */
 }
 
 /* --- Language Switcher --- */
@@ -29,7 +52,7 @@ body {
     padding: 5px 10px;
     border-radius: 5px;
     box-shadow: 0 1px 4px rgba(0,0,0,0.2);
-    z-index: 1100; /* Higher than sticky header */
+    z-index: 1100;
 }
 
 .lang-switcher button {
@@ -41,302 +64,498 @@ body {
     color: #333;
     opacity: 0.7;
     font-weight: bold;
+    font-family: 'Lato', sans-serif; /* Consistent font */
 }
 
 .lang-switcher button.active {
     opacity: 1;
-    color: #4CAF50; /* Highlight active language */
+    color: #4CAF50;
     text-decoration: underline;
+    text-underline-offset: 3px;
 }
 
-.lang-switcher button:hover {
+.lang-switcher button:not(.active):hover {
     opacity: 1;
+    color: #1a7d1d;
 }
 
-
-/* --- Container Utama --- */
-.container {
-    max-width: 800px;
-    margin: 0 auto; /* Center container */
-    /* Remove margin-top as hero is outside/sticky */
-    margin-top: 0; /* Let sticky header define top space */
-    background-color: #fff;
-    box-shadow: 0 0 15px rgba(0,0,0,0.1);
-    border-radius: 8px;
-    overflow: hidden; /* Keep this for content clipping */
-}
-
-/* --- Header / Hero Section (Sticky) --- */
+/* --- Header / Hero Section (Sticky with Background Image) --- */
 .hero {
-    background-color: #4CAF50;
-    color: #fff;
-    padding: 25px 20px; /* Slightly reduced padding maybe */
-    text-align: center;
-    /* Sticky properties */
     position: sticky;
-    top: 0; /* Stick to the top */
-    z-index: 100; /* Ensure it's above the container content */
-    width: 100%; /* Take full width when sticky */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Add shadow */
+    top: 0;
+    z-index: 100;
+    width: 100%;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    /* GANTI 'images/hero-background.jpg' dengan path gambar Anda */
+    background:
+        linear-gradient(rgba(20, 60, 20, 0.65), rgba(0, 0, 0, 0.75)), /* Overlay */
+        url('../images/hero-background.jpg') no-repeat center center/cover;
+    color: #fff;
+    min-height: 350px;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 .hero h1 {
-    font-size: 2.5em;
-    margin-bottom: 10px;
-    font-weight: bold;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    font-family: 'Poppins', sans-serif;
+    font-size: 3em;
+    font-weight: 700;
+    margin-bottom: 15px;
+    line-height: 1.2;
+    color: #fff; /* Ensure white */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8); /* Stronger shadow */
 }
 
 .hero .tagline {
-    font-size: 1.2em;
-    font-weight: 300;
+    font-family: 'Lato', sans-serif;
+    font-size: 1.4em;
+    font-weight: 400;
+    max-width: 650px;
+    margin-top: 0;
+    line-height: 1.5;
+    color: #f0f0f0; /* Slightly off-white for tagline */
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
 }
 
-/* --- Content Sections --- */
-/* Add padding top to the first section inside container to prevent overlap with sticky header */
-.container main section:first-child {
-    padding-top: 40px; /* Adjust as needed */
+
+/* --- Main Content Container --- */
+.container {
+    max-width: 850px; /* Slightly wider container */
+    margin: 0 auto;
+    background-color: #fff; /* Default bg */
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1); /* Softer shadow */
+    border-radius: 0 0 8px 8px; /* Rounded corners only at the bottom */
+    overflow: hidden; /* Keep content contained */
 }
 
+/* --- General Section Styling --- */
 section {
-    padding: 30px 25px;
+    padding: 40px 30px; /* Increased padding */
     border-bottom: 1px solid #eee;
 }
 
-section:last-of-type { /* Use last-of-type for better accuracy */
+/* Alternating Backgrounds */
+.container main section:nth-child(even) {
+     background-color: #f8f9fa; /* Light gray for even sections */
+}
+/* Specific Overrides */
+#registration-form {
+    background-color: #e8f5e9; /* Keep special form bg */
+}
+#faq {
+    background-color: #f8f9fa; /* Or make it same as other even sections */
+}
+
+
+section:last-of-type {
     border-bottom: none;
 }
 
+/* --- Styling Specific Sections --- */
 
-section h2 {
-    font-size: 1.8em;
-    color: #4CAF50;
-    margin-bottom: 20px;
-    text-align: center;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-/* --- Styling Khusus Konten --- */
-.benefits ul, .topics ul, .schedule ol {
+/* Lists (Benefits, Topics) */
+.benefits ul, .topics ul {
     list-style: none;
     padding-left: 0;
+    margin-top: 10px;
 }
 
-.benefits li, .topics li, .schedule li {
-    margin-bottom: 15px;
-    padding-left: 25px;
+.benefits li, .topics li {
+    margin-bottom: 18px; /* More space between items */
+    padding-left: 30px; /* More space for icon */
     position: relative;
+    font-size: 1.05em; /* Slightly larger list text */
 }
 
+/* Icons for Lists (Using pseudo-elements) */
 .benefits li::before, .topics li::before {
-    content: '✔';
+    content: '✔'; /* Replace with Font Awesome if preferred */
     color: #4CAF50;
     position: absolute;
     left: 0;
+    top: 2px; /* Adjust vertical alignment */
     font-weight: bold;
+    font-size: 1.2em;
+}
+/* Add specific icons for topics if desired */
+/* #topics li:nth-child(1)::before { content: '⚙️'; } */
+
+/* Schedule List */
+.schedule ol {
+    list-style: none;
+    padding-left: 0;
+    border-left: 3px solid #4CAF50; /* Timeline effect */
+    margin-left: 10px;
+}
+.schedule li {
+    margin-bottom: 20px;
+    padding-left: 25px;
+    position: relative;
 }
 .schedule li::before {
-   content: '🕒';
+   content: ''; /* Custom marker */
    position: absolute;
-   left: 0;
+   left: -14px; /* Position over the border-left */
+   top: 6px;
+   width: 10px;
+   height: 10px;
+   background-color: #4CAF50;
+   border-radius: 50%;
+   border: 2px solid #fff;
+}
+.schedule li strong {
+    color: #388E3C; /* Highlight day/focus */
+}
+
+/* Instructors Section */
+.instructors .instructor-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid */
+    gap: 30px; /* Space between instructor cards */
+    margin-top: 20px;
 }
 
 .instructors .instructor {
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
     text-align: center;
-    margin-bottom: 20px;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    border: 1px solid #eee;
 }
+
+.instructors .instructor:hover {
+     transform: translateY(-5px);
+     box-shadow: 0 6px 15px rgba(0,0,0,0.12);
+}
+
 .instructors .instructor img {
-    width: 100px;
-    height: 100px;
+    width: 120px; /* Larger image */
+    height: 120px;
     border-radius: 50%;
-    margin-bottom: 10px;
-    background-color: #ccc;
-    display: inline-block;
-    object-fit: cover; /* Ensures image covers the area */
+    margin-bottom: 15px;
+    background-color: #ccc; /* Placeholder color */
+    object-fit: cover; /* Ensure image covers space */
+    border: 4px solid #e8f5e9; /* Subtle border matching form bg */
 }
+
 .instructors .instructor h4 {
-    margin-bottom: 5px;
-    font-size: 1.1em;
+    margin-bottom: 8px;
+    font-size: 1.2em;
+    color: #2c6e2e; /* Consistent heading color */
 }
+
 .instructors .instructor p {
+    font-size: 0.95em;
+    color: #555; /* Darker gray for description */
+    line-height: 1.5;
+}
+
+/* Logistics Section */
+#logistics .logistics-grid {
+     display: flex;
+     justify-content: space-around;
+     flex-wrap: wrap;
+     gap: 20px; /* Space between date/time and location */
+     margin-bottom: 30px; /* Space before investment info */
+}
+#logistics .date-time, #logistics .location {
+    flex-basis: calc(50% - 20px); /* Aim for two columns */
+    min-width: 250px; /* Prevent excessive shrinking */
+    text-align: center;
+    background-color: #fff; /* Optional background */
+    padding: 20px;
+    border-radius: 6px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+#logistics p {
+    font-size: 1.1em;
+    margin-bottom: 5px;
+    color: #444;
+}
+#logistics strong {
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+    font-size: 1.1em; /* Make location/date stand out */
+}
+#logistics .investment {
+    text-align: center;
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 6px;
+    border: 1px dashed #4CAF50; /* Highlight investment */
+}
+#logistics .investment p:first-child {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #2c6e2e;
+}
+#logistics .investment p:last-child {
     font-size: 0.9em;
     color: #666;
 }
 
-.location p, .date-time p {
-    text-align: center;
-    font-size: 1.1em;
-    margin-bottom: 5px;
-}
-.location strong, .date-time strong {
-    display: block;
-    margin-bottom: 8px;
-    color: #555;
-}
 
-/* --- Registration Form --- */
+/* Registration Form */
 #registration-form {
-    background-color: #e8f5e9;
+    padding: 40px 30px;
 }
 #registration-form label {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 8px; /* More space for label */
     font-weight: bold;
+    font-size: 1em;
+    color: #333;
 }
 #registration-form input[type="text"],
 #registration-form input[type="email"],
 #registration-form input[type="tel"] {
     width: 100%;
-    padding: 12px;
-    margin-bottom: 15px;
+    padding: 14px; /* Larger padding */
+    margin-bottom: 20px; /* More space between fields */
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 5px; /* Consistent radius */
+    font-size: 1em;
+    font-family: 'Lato', sans-serif; /* Ensure consistent font */
+}
+#registration-form input:focus {
+    outline: none;
+    border-color: #4CAF50; /* Highlight on focus */
+    box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
 }
 #registration-form .disclaimer {
-    font-size: 0.8em;
-    color: #777;
-    margin-bottom: 15px;
+    font-size: 0.85em; /* Slightly larger disclaimer */
+    color: #666; /* Darker disclaimer text */
+    margin-bottom: 20px; /* More space before button */
     text-align: center;
+    line-height: 1.4;
 }
 
-/* --- Call to Action (CTA) Button --- */
-.cta-button {
+/* Call to Action (CTA) Buttons */
+.cta-button { /* Main form button */
     display: block;
     width: 100%;
     background-color: #FF9800;
     color: #fff;
-    padding: 15px 20px;
+    padding: 16px 20px; /* Larger padding */
     text-align: center;
     text-decoration: none;
-    font-size: 1.3em;
-    font-weight: bold;
+    font-size: 1.4em; /* Larger font */
+    font-weight: 700; /* Bolder */
+    font-family: 'Poppins', sans-serif; /* Match headings */
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
     text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 .cta-button:hover {
-    background-color: #e68a00;
+    background-color: #f57c00; /* Darker orange on hover */
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+.cta-button:active {
+    transform: translateY(0px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
 }
 
-.cta-link {
+.cta-link { /* Secondary button (e.g., See Schedule) */
    display: inline-block;
-   background-color: #FF9800;
-   color: #fff;
+   background-color: transparent; /* Outline style */
+   color: #FF9800; /* Orange text */
    padding: 12px 25px;
    text-decoration: none;
    border-radius: 5px;
    font-weight: bold;
-   transition: background-color 0.3s ease;
-   margin-top: 15px;
+   border: 2px solid #FF9800; /* Orange border */
+   transition: background-color 0.3s ease, color 0.3s ease;
+   margin-top: 20px; /* More space above */
+   font-family: 'Poppins', sans-serif;
 }
 .cta-link:hover {
-    background-color: #e68a00;
+    background-color: #FF9800; /* Fill on hover */
+    color: #fff;
 }
 .center-cta {
    text-align: center;
+   margin-top: 15px; /* Adjust as needed */
 }
 
-/* --- FAQ Styling --- */
+/* FAQ Section */
 #faq details {
     margin-bottom: 15px;
-    background-color: #f9f9f9;
-    border: 1px solid #eee;
-    border-radius: 4px;
-    padding: 10px 15px;
+    background-color: #fff; /* White background */
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    padding: 15px 20px;
+    transition: background-color 0.3s, box-shadow 0.2s;
 }
+#faq details:hover {
+    background-color: #fdfdfd;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+#faq details[open] {
+    background-color: #f8f9fa;
+    border-left: 4px solid #4CAF50; /* Highlight when open */
+    padding-left: 17px;
+}
+
 #faq summary {
     font-weight: bold;
+    font-size: 1.1em;
+    color: #388E3C;
     cursor: pointer;
-    outline: none; /* Remove default focus outline */
-    list-style: none; /* Hide default marker in some browsers */
+    outline: none;
+    list-style: none; /* Hide default marker */
     position: relative;
-    padding-right: 20px; /* Space for custom marker */
+    padding-right: 25px; /* Space for custom marker */
 }
-#faq summary::-webkit-details-marker {
-    display: none; /* Hide default marker in Chrome/Safari */
-}
-#faq summary::after { /* Custom marker */
+#faq summary::-webkit-details-marker { display: none; } /* Hide default marker */
+#faq summary::after { /* Custom marker '+' */
     content: '+';
     position: absolute;
-    right: 0;
-    top: 0;
-    font-size: 1.2em;
-    font-weight: bold;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.5em;
+    font-weight: normal;
     color: #4CAF50;
+    transition: transform 0.2s ease;
 }
 #faq details[open] summary::after {
-    content: '−';
+    content: '−'; /* Change to minus when open */
+    transform: translateY(-50%) rotate(180deg); /* Optional rotate effect */
+}
+#faq details[open] summary {
+    margin-bottom: 15px; /* Space between title and answer when open */
+    color: #2c6e2e;
 }
 
 #faq details p {
-    padding-left: 0; /* Reset padding if needed */
-    margin-top: 10px;
+    padding-left: 0;
+    margin-top: 0;
+    color: #555;
+    line-height: 1.6;
 }
 
-
-/* --- Footer --- */
+/* Footer */
 footer {
     text-align: center;
-    padding: 20px;
-    font-size: 0.9em;
-    color: #777;
-    background-color: #eee;
-     border-bottom-left-radius: 8px; /* Match container radius */
-     border-bottom-right-radius: 8px;
+    padding: 30px 20px; /* Increased padding */
+    font-size: 0.95em;
+    color: #666;
+    background-color: #e9ecef; /* Slightly darker footer bg */
+    border-top: 1px solid #ddd;
+     /* Match container radius if container is not full width on desktop */
+     /* border-bottom-left-radius: 8px; */
+     /* border-bottom-right-radius: 8px; */
+}
+
+footer p {
+    margin-bottom: 8px;
+}
+footer p:last-child {
+    margin-bottom: 0;
 }
 
 footer a {
     color: #FF9800;
     text-decoration: none;
+    font-weight: bold;
 }
 footer a:hover {
     text-decoration: underline;
 }
 
-
 /* --- Responsive Adjustments --- */
-@media (max-width: 850px) { /* Adjust breakpoint if needed */
+
+/* Larger Lists Columns Breakpoint */
+@media (min-width: 768px) {
+    #benefits ul, #topics ul {
+        column-count: 2;
+        column-gap: 40px;
+    }
+    #benefits li, #topics li {
+        break-inside: avoid-column;
+    }
+}
+
+
+@media (max-width: 850px) { /* Container goes full width */
      .container {
-         max-width: 100%; /* Allow container to shrink */
+         max-width: 100%;
          border-radius: 0;
          box-shadow: none;
-         margin: 0; /* Remove auto margins */
+         margin: 0;
      }
       footer {
          border-radius: 0;
       }
        html {
-         /* Adjust scroll padding if header height changes on mobile */
+         /* Adjust scroll padding if header height changes significantly */
          /* scroll-padding-top: 80px; */
        }
 }
 
 
 @media (max-width: 600px) {
+    /* Hero Adjustments */
+    .hero {
+        min-height: 300px; /* Adjust height */
+        padding: 30px 15px;
+    }
     .hero h1 {
-        font-size: 2em;
+        font-size: 2.2em;
     }
     .hero .tagline {
-        font-size: 1em;
-    }
-     .hero {
-        padding: 20px 15px; /* Adjust padding for smaller screens */
-     }
-    section h2 {
-        font-size: 1.5em;
-    }
-    section {
-       padding: 25px 15px;
+        font-size: 1.1em;
+        max-width: 90%;
     }
 
-    /* Stack logistics items vertically */
-     #logistics > div {
-        flex-basis: 100%;
-     }
+     /* General Adjustments */
+    h2 { font-size: 1.7em; margin-bottom: 20px;}
+    h3 { font-size: 1.3em; }
+    section { padding: 30px 20px; }
+
+    /* Lists */
+     .benefits li, .topics li { font-size: 1em; padding-left: 25px; margin-bottom: 15px; }
+     .benefits li::before, .topics li::before { top: 0; font-size: 1.1em; }
+     .schedule ol { margin-left: 5px; }
+     .schedule li { padding-left: 20px; }
+     .schedule li::before { left: -13px; }
+
+     /* Instructors */
+     .instructors .instructor-grid { grid-template-columns: 1fr; gap: 20px;} /* Stack cards */
+     .instructors .instructor img { width: 100px; height: 100px; }
+
+     /* Logistics */
+     #logistics .logistics-grid { flex-direction: column; gap: 15px; }
+     #logistics .date-time, #logistics .location { flex-basis: 100%; padding: 15px;}
+
+     /* Form & Buttons */
+     #registration-form input[type="text"],
+     #registration-form input[type="email"],
+     #registration-form input[type="tel"] { padding: 12px; margin-bottom: 15px; }
+     .cta-button { font-size: 1.2em; padding: 14px 18px; }
+     .cta-link { padding: 10px 20px; }
+
+     /* FAQ */
+     #faq details { padding: 12px 15px; }
+     #faq summary { font-size: 1em; padding-right: 20px;}
+     #faq summary::after { font-size: 1.3em; }
+
+     /* Language Switcher */
       .lang-switcher {
         top: 10px;
         right: 10px;
