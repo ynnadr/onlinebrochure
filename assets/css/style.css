@@ -1,0 +1,349 @@
+/* --- Basic Reset & Font --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-padding-top: 100px; /* Adjust based on sticky header height */
+     scroll-behavior: smooth; /* Optional: smooth scroll for internal links */
+}
+
+
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f4;
+    /* Remove potential overflow issues for sticky header */
+    /* overflow-x: hidden; potentially remove if causing issues */
+}
+
+/* --- Language Switcher --- */
+.lang-switcher {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 5px 10px;
+    border-radius: 5px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+    z-index: 1100; /* Higher than sticky header */
+}
+
+.lang-switcher button {
+    background: none;
+    border: none;
+    padding: 5px 8px;
+    cursor: pointer;
+    font-size: 0.9em;
+    color: #333;
+    opacity: 0.7;
+    font-weight: bold;
+}
+
+.lang-switcher button.active {
+    opacity: 1;
+    color: #4CAF50; /* Highlight active language */
+    text-decoration: underline;
+}
+
+.lang-switcher button:hover {
+    opacity: 1;
+}
+
+
+/* --- Container Utama --- */
+.container {
+    max-width: 800px;
+    margin: 0 auto; /* Center container */
+    /* Remove margin-top as hero is outside/sticky */
+    margin-top: 0; /* Let sticky header define top space */
+    background-color: #fff;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    overflow: hidden; /* Keep this for content clipping */
+}
+
+/* --- Header / Hero Section (Sticky) --- */
+.hero {
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 25px 20px; /* Slightly reduced padding maybe */
+    text-align: center;
+    /* Sticky properties */
+    position: sticky;
+    top: 0; /* Stick to the top */
+    z-index: 100; /* Ensure it's above the container content */
+    width: 100%; /* Take full width when sticky */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Add shadow */
+}
+
+.hero h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+.hero .tagline {
+    font-size: 1.2em;
+    font-weight: 300;
+}
+
+/* --- Content Sections --- */
+/* Add padding top to the first section inside container to prevent overlap with sticky header */
+.container main section:first-child {
+    padding-top: 40px; /* Adjust as needed */
+}
+
+section {
+    padding: 30px 25px;
+    border-bottom: 1px solid #eee;
+}
+
+section:last-of-type { /* Use last-of-type for better accuracy */
+    border-bottom: none;
+}
+
+
+section h2 {
+    font-size: 1.8em;
+    color: #4CAF50;
+    margin-bottom: 20px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* --- Styling Khusus Konten --- */
+.benefits ul, .topics ul, .schedule ol {
+    list-style: none;
+    padding-left: 0;
+}
+
+.benefits li, .topics li, .schedule li {
+    margin-bottom: 15px;
+    padding-left: 25px;
+    position: relative;
+}
+
+.benefits li::before, .topics li::before {
+    content: '✔';
+    color: #4CAF50;
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+.schedule li::before {
+   content: '🕒';
+   position: absolute;
+   left: 0;
+}
+
+.instructors .instructor {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.instructors .instructor img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    background-color: #ccc;
+    display: inline-block;
+    object-fit: cover; /* Ensures image covers the area */
+}
+.instructors .instructor h4 {
+    margin-bottom: 5px;
+    font-size: 1.1em;
+}
+.instructors .instructor p {
+    font-size: 0.9em;
+    color: #666;
+}
+
+.location p, .date-time p {
+    text-align: center;
+    font-size: 1.1em;
+    margin-bottom: 5px;
+}
+.location strong, .date-time strong {
+    display: block;
+    margin-bottom: 8px;
+    color: #555;
+}
+
+/* --- Registration Form --- */
+#registration-form {
+    background-color: #e8f5e9;
+}
+#registration-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+#registration-form input[type="text"],
+#registration-form input[type="email"],
+#registration-form input[type="tel"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+#registration-form .disclaimer {
+    font-size: 0.8em;
+    color: #777;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+/* --- Call to Action (CTA) Button --- */
+.cta-button {
+    display: block;
+    width: 100%;
+    background-color: #FF9800;
+    color: #fff;
+    padding: 15px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 1.3em;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-transform: uppercase;
+}
+
+.cta-button:hover {
+    background-color: #e68a00;
+}
+
+.cta-link {
+   display: inline-block;
+   background-color: #FF9800;
+   color: #fff;
+   padding: 12px 25px;
+   text-decoration: none;
+   border-radius: 5px;
+   font-weight: bold;
+   transition: background-color 0.3s ease;
+   margin-top: 15px;
+}
+.cta-link:hover {
+    background-color: #e68a00;
+}
+.center-cta {
+   text-align: center;
+}
+
+/* --- FAQ Styling --- */
+#faq details {
+    margin-bottom: 15px;
+    background-color: #f9f9f9;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    padding: 10px 15px;
+}
+#faq summary {
+    font-weight: bold;
+    cursor: pointer;
+    outline: none; /* Remove default focus outline */
+    list-style: none; /* Hide default marker in some browsers */
+    position: relative;
+    padding-right: 20px; /* Space for custom marker */
+}
+#faq summary::-webkit-details-marker {
+    display: none; /* Hide default marker in Chrome/Safari */
+}
+#faq summary::after { /* Custom marker */
+    content: '+';
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #4CAF50;
+}
+#faq details[open] summary::after {
+    content: '−';
+}
+
+#faq details p {
+    padding-left: 0; /* Reset padding if needed */
+    margin-top: 10px;
+}
+
+
+/* --- Footer --- */
+footer {
+    text-align: center;
+    padding: 20px;
+    font-size: 0.9em;
+    color: #777;
+    background-color: #eee;
+     border-bottom-left-radius: 8px; /* Match container radius */
+     border-bottom-right-radius: 8px;
+}
+
+footer a {
+    color: #FF9800;
+    text-decoration: none;
+}
+footer a:hover {
+    text-decoration: underline;
+}
+
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 850px) { /* Adjust breakpoint if needed */
+     .container {
+         max-width: 100%; /* Allow container to shrink */
+         border-radius: 0;
+         box-shadow: none;
+         margin: 0; /* Remove auto margins */
+     }
+      footer {
+         border-radius: 0;
+      }
+       html {
+         /* Adjust scroll padding if header height changes on mobile */
+         /* scroll-padding-top: 80px; */
+       }
+}
+
+
+@media (max-width: 600px) {
+    .hero h1 {
+        font-size: 2em;
+    }
+    .hero .tagline {
+        font-size: 1em;
+    }
+     .hero {
+        padding: 20px 15px; /* Adjust padding for smaller screens */
+     }
+    section h2 {
+        font-size: 1.5em;
+    }
+    section {
+       padding: 25px 15px;
+    }
+
+    /* Stack logistics items vertically */
+     #logistics > div {
+        flex-basis: 100%;
+     }
+      .lang-switcher {
+        top: 10px;
+        right: 10px;
+        padding: 3px 6px;
+      }
+      .lang-switcher button {
+        font-size: 0.8em;
+        padding: 4px 6px;
+      }
+}
