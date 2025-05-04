@@ -6,8 +6,14 @@
     <!-- Title and Meta Description will be updated by JS -->
     <title data-translate="pageTitle">Klinik Bersepeda Akhir Pekan - Kuasai Sepeda & Keamanannya!</title>
     <meta name="description" content="Ikuti klinik bersepeda akhir pekan kami! Belajar teknik dasar hingga keselamatan berkendara dari instruktur ahli. Cocok untuk pemula. Daftar sekarang!" data-translate="metaDescription">
+    <!-- Google Fonts (Example: Poppins & Lato) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
     <!-- Link CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
+    <!-- Add Font Awesome (Optional, for better icons) -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> -->
 </head>
 <body>
 
@@ -17,7 +23,7 @@
         <button data-lang="en">EN</button>
     </div>
 
-    <!-- Sticky Header -->
+    <!-- Sticky Header / Hero Section -->
     <header class="hero">
         <h1 data-translate="heroTitle">Klinik Bersepeda Akhir Pekan</h1>
         <p class="tagline" data-translate="heroTagline">Kuasai Dasar Bersepeda & Utamakan Keselamatan Bersama Ahlinya!</p>
@@ -26,10 +32,12 @@
     <!-- Main Content Container -->
     <div class="container">
         <main>
+            <!-- Section: Why Join -->
             <section id="about" class="benefits">
                 <h2 data-translate="whyJoinTitle">Mengapa Bergabung Dengan Klinik Ini?</h2>
                 <p style="text-align: center; margin-bottom: 25px;" data-translate="whyJoinIntro">Apakah Anda ingin mulai bersepeda tapi bingung harus mulai dari mana? Atau ingin lebih percaya diri saat bersepeda di jalan? Klinik ini dirancang khusus untuk Anda!</p>
                 <ul>
+                    <!-- Use Font Awesome icons if included: <i class="fas fa-check-circle"></i> -->
                     <li data-translate="benefit1">Belajar dari nol hingga bisa bersepeda dengan lancar.</li>
                     <li data-translate="benefit2">Memahami teknik dasar bersepeda yang benar (keseimbangan, pengereman, perpindahan gigi).</li>
                     <li data-translate="benefit3">Mendapatkan pengetahuan penting tentang keselamatan bersepeda di berbagai kondisi.</li>
@@ -39,12 +47,15 @@
                 </ul>
                  <div class="center-cta">
                      <a href="#logistics" class="cta-link" data-translate="seeScheduleButton">Lihat Jadwal & Daftar!</a>
+                     <!-- Example with icon: <a href="#logistics" class="cta-link" data-translate="seeScheduleButton">Lihat Jadwal & Daftar! <i class="fas fa-arrow-right"></i></a> -->
                  </div>
             </section>
 
+            <!-- Section: Topics -->
             <section id="topics">
                 <h2 data-translate="topicsTitle">Apa Saja yang Akan Dipelajari?</h2>
                 <ul>
+                     <!-- Use relevant icons if included -->
                     <li data-translate="topic1"><strong>Teori Singkat:</strong> Pengenalan jenis sepeda, komponen penting, dan perlengkapan keamanan (helm, dll.).</li>
                     <li data-translate="topic2"><strong>Praktik Dasar:</strong> Keseimbangan statis & dinamis, cara naik & turun sepeda, memulai & berhenti dengan mulus.</li>
                     <li data-translate="topic3"><strong>Teknik Berkendara:</strong> Mengayuh efisien, teknik pengereman yang aman, perpindahan gigi (jika sepeda mendukung).</li>
@@ -54,58 +65,67 @@
                 </ul>
             </section>
 
+            <!-- Section: Schedule -->
             <section id="schedule" class="schedule">
                 <h2 data-translate="scheduleTitle">Jadwal Acara (Contoh)</h2>
                 <ol>
+                    <!-- Use calendar/time icons if included -->
                     <li data-translate="scheduleDay1"><strong>Hari 1 (Sabtu): Fokus Dasar & Teknik</strong><br>08:00 - 09:00: Registrasi & Pengenalan Teori Dasar<br>09:00 - 12:00: Praktik Keseimbangan, Mulai & Berhenti<br>12:00 - 13:00: Istirahat<br>13:00 - 15:00: Praktik Mengayuh, Pengereman, Belok</li>
                     <li data-translate="scheduleDay2"><strong>Hari 2 (Minggu): Fokus Keselamatan & Aplikasi</strong><br>08:00 - 09:00: Teori Keselamatan & Aturan Berkendara<br>09:00 - 12:00: Praktik Isyarat Tangan, Memindai, Simulasi Jalan<br>12:00 - 13:00: Istirahat & Tanya Jawab<br>13:00 - 14:30: Latihan Terpadu & Tips Perawatan<br>14:30 - 15:00: Penutupan & Foto Bersama</li>
                 </ol>
                  <p style="text-align:center; margin-top:15px; font-style:italic;" data-translate="scheduleNote">*Jadwal rinci akan diberikan setelah pendaftaran.</p>
             </section>
 
+            <!-- Section: Instructors -->
             <section id="instructors" class="instructors">
                 <h2 data-translate="instructorsTitle">Instruktur Ahli Kami</h2>
-                <div class="instructor">
-                    <img src="images/placeholder-instructor1.jpg" alt="Foto Instruktur 1">
-                    <h4 data-translate="instructor1Name">[Nama Instruktur 1]</h4>
-                    <p data-translate="instructor1Desc">Pengalaman 10+ tahun dalam pelatihan sepeda & safety riding. Bersertifikat [Sebutkan Sertifikasi jika ada].</p>
-                </div>
-                <div class="instructor">
-                     <img src="images/placeholder-instructor2.jpg" alt="Foto Instruktur 2">
-                    <h4 data-translate="instructor2Name">[Nama Instruktur 2]</h4>
-                    <p data-translate="instructor2Desc">Atlet sepeda / pegiat komunitas sepeda aktif. Ahli dalam teknik bersepeda efisien dan aman di perkotaan.</p>
+                <div class="instructor-grid"> <!-- Wrapper for potential grid layout -->
+                    <div class="instructor">
+                        <img src="images/placeholder-instructor1.jpg" alt="Foto Instruktur 1"> <!-- GANTI alt text jika nama diketahui -->
+                        <h4 data-translate="instructor1Name">[Nama Instruktur 1]</h4>
+                        <p data-translate="instructor1Desc">Pengalaman 10+ tahun dalam pelatihan sepeda & safety riding. Bersertifikat [Sebutkan Sertifikasi jika ada].</p>
+                    </div>
+                    <div class="instructor">
+                         <img src="images/placeholder-instructor2.jpg" alt="Foto Instruktur 2"> <!-- GANTI alt text jika nama diketahui -->
+                        <h4 data-translate="instructor2Name">[Nama Instruktur 2]</h4>
+                        <p data-translate="instructor2Desc">Atlet sepeda / pegiat komunitas sepeda aktif. Ahli dalam teknik bersepeda efisien dan aman di perkotaan.</p>
+                    </div>
+                    <!-- Add more instructors here if needed -->
                 </div>
             </section>
 
+            <!-- Section: Logistics -->
              <section id="logistics">
-                 <h2 data-translate="logisticsTitle" style="display: none;">Logistics</h2> <!-- Hidden H2 for structure if needed -->
-                 <div style="display: flex; justify-content: space-around; flex-wrap: wrap;">
-                     <div class="date-time" style="flex-basis: 45%; margin-bottom: 20px;">
+                 <h2 data-translate="logisticsTitle" style="display: none;">Logistics</h2> <!-- Hidden H2 for structure -->
+                 <div class="logistics-grid">
+                     <div class="date-time">
                         <h3 data-translate="dateTimeTitle">Tanggal & Waktu</h3>
                         <p data-translate="dateTimeDetail1"><strong>[Tanggal Mulai] - [Tanggal Selesai]</strong></p>
                         <p data-translate="dateTimeDetail2">(Sabtu & Minggu)</p>
                         <p data-translate="dateTimeDetail3">Pukul 08:00 - 15:00 WIB</p>
                     </div>
-                    <div class="location" style="flex-basis: 45%; margin-bottom: 20px;">
+                    <div class="location">
                         <h3 data-translate="locationTitle">Lokasi</h3>
                         <p data-translate="locationDetail1"><strong>[Nama Tempat]</strong></p>
                         <p data-translate="locationDetail2">[Alamat Lengkap Lokasi]</p>
                         <p data-translate="locationDetail3">(Area luas dan aman untuk latihan)</p>
                     </div>
                  </div>
-                   <p style="text-align: center; margin-top: 10px;">
+                 <div class="investment">
+                   <p>
                        <span data-translate="investmentLabel">Biaya Investasi:</span>
                        <span data-translate="investmentPrice"><strong>[Sebutkan Harga]</strong> / Peserta</span>
                    </p>
-                   <p style="text-align: center; font-size: 0.9em;" data-translate="investmentIncludes">(Termasuk: Materi, Snack, Sertifikat Digital, Pendampingan Instruktur)</p>
+                   <p data-translate="investmentIncludes">(Termasuk: Materi, Snack, Sertifikat Digital, Pendampingan Instruktur)</p>
+                 </div>
              </section>
 
-
+            <!-- Section: Registration Form -->
             <section id="registration-form">
                 <h2 data-translate="registrationTitle">Daftar Sekarang! Tempat Terbatas!</h2>
                 <p style="text-align: center; margin-bottom: 25px;" data-translate="registrationIntro">Amankan tempat Anda di Klinik Bersepeda Akhir Pekan ini. Isi formulir di bawah untuk mendaftar.</p>
 
-                <form action="#" method="POST">
+                <form action="#" method="POST"> <!-- GANTI action="#" dengan URL backend/layanan form Anda -->
                     <label for="nama" data-translate="formNameLabel">Nama Lengkap:</label>
                     <input type="text" id="nama" name="nama" required data-translate="formNamePlaceholder" placeholder="Masukkan nama lengkap Anda">
 
@@ -122,26 +142,29 @@
                 </form>
             </section>
 
+            <!-- Section: FAQ -->
              <section id="faq">
                 <h2 data-translate="faqTitle">Pertanyaan Umum (FAQ)</h2>
                 <details>
                     <summary data-translate="faq1Question">Apakah saya perlu membawa sepeda sendiri?</summary>
                     <p data-translate="faq1Answer">Ya, disarankan membawa sepeda pribadi agar terbiasa. Jika tidak punya, harap hubungi kami untuk opsi penyewaan (jika tersedia).</p>
                 </details>
-                 <details style="margin-top:15px;">
+                 <details>
                     <summary data-translate="faq2Question">Apakah klinik ini cocok untuk anak-anak?</summary>
                     <p data-translate="faq2Answer">Klinik ini dirancang untuk [Sebutkan Target Usia, misal: dewasa dan remaja usia 15 tahun ke atas]. Untuk kelas anak-anak, silakan hubungi kami.</p>
                 </details>
+                <!-- Tambahkan FAQ lain jika perlu -->
             </section>
         </main>
     </div> <!-- End .container -->
 
+    <!-- Footer -->
     <footer>
         <p data-translate="footerCopyright">© 2024 [Nama Penyelenggara Anda]. Semua Hak Cipta Dilindungi.</p>
         <p data-translate="footerContact">Ada pertanyaan? Hubungi kami di: <a href="mailto:[Email Anda]">[Email Anda]</a> atau WA: [Nomor Kontak Anda]</p>
     </footer>
 
-    <!-- Link JavaScript -->
+    <!-- Link JavaScript (Pastikan path benar) -->
     <script src="assets/js/script.js"></script>
 </body>
 </html>
