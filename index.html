@@ -1,373 +1,147 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id"> <!-- Default language, JS will update it -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Klinik Bersepeda Akhir Pekan - Kuasai Sepeda & Keamanannya!</title>
-    <meta name="description" content="Ikuti klinik bersepeda akhir pekan kami! Belajar teknik dasar hingga keselamatan berkendara dari instruktur ahli. Cocok untuk pemula. Daftar sekarang!">
-    <style>
-        /* --- Basic Reset & Font --- */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: 'Helvetica Neue', Arial, sans-serif; /* Ganti dengan font pilihan jika ada */
-            line-height: 1.6;
-            color: #333;
-            background-color: #f4f4f4; /* Background dasar */
-        }
-
-        /* --- Container Utama --- */
-        .container {
-            max-width: 800px; /* Lebar maksimal konten, seperti ukuran poster */
-            margin: 20px auto;
-            background-color: #fff; /* Warna kertas brosur */
-            box-shadow: 0 0 15px rgba(0,0,0,0.1); /* Efek bayangan halus */
-            border-radius: 8px; /* Sudut sedikit membulat */
-            overflow: hidden; /* Agar elemen anak tidak keluar */
-        }
-
-        /* --- Header / Hero Section --- */
-        .hero {
-            background-color: #4CAF50; /* Warna tema (hijau segar) */
-            color: #fff;
-            padding: 40px 20px;
-            text-align: center;
-            /* Ganti dengan gambar background jika ada: */
-            /* background: url('path/to/your/hero-image.jpg') no-repeat center center/cover; */
-        }
-
-        .hero h1 {
-            font-size: 2.5em; /* Ukuran judul besar */
-            margin-bottom: 10px;
-            font-weight: bold;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
-        }
-
-        .hero .tagline {
-            font-size: 1.2em;
-            font-weight: 300;
-        }
-
-        /* --- Content Sections --- */
-        section {
-            padding: 30px 25px;
-            border-bottom: 1px solid #eee; /* Garis pemisah antar bagian */
-        }
-
-        section:last-child {
-            border-bottom: none;
-        }
-
-        section h2 {
-            font-size: 1.8em;
-            color: #4CAF50; /* Warna tema untuk subjudul */
-            margin-bottom: 20px;
-            text-align: center;
-            text-transform: uppercase; /* Kesan judul poster */
-            letter-spacing: 1px;
-        }
-
-        /* --- Styling Khusus Konten --- */
-        .benefits ul, .topics ul, .schedule ol {
-            list-style: none; /* Hapus bullet/number default */
-            padding-left: 0;
-        }
-
-        .benefits li, .topics li, .schedule li {
-            margin-bottom: 15px;
-            padding-left: 25px; /* Ruang untuk ikon */
-            position: relative;
-        }
-
-        /* Icon sederhana pakai pseudo-element (ganti dengan icon asli jika ada) */
-        .benefits li::before, .topics li::before {
-            content: '✔'; /* Atau pakai emoji: 🚴‍♀️, ✨, 👍 */
-            color: #4CAF50;
-            position: absolute;
-            left: 0;
-            font-weight: bold;
-        }
-         .schedule li::before {
-            content: '🕒'; /* Atau pakai emoji waktu */
-            position: absolute;
-            left: 0;
-         }
-
-        .instructors .instructor {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .instructors .instructor img {
-            width: 100px; /* Ukuran foto instruktur */
-            height: 100px;
-            border-radius: 50%;
-            margin-bottom: 10px;
-            background-color: #ccc; /* Placeholder jika tidak ada gambar */
-            display: inline-block;
-        }
-        .instructors .instructor h4 {
-            margin-bottom: 5px;
-            font-size: 1.1em;
-        }
-        .instructors .instructor p {
-            font-size: 0.9em;
-            color: #666;
-        }
-
-        .location p, .date-time p {
-            text-align: center;
-            font-size: 1.1em;
-            margin-bottom: 5px;
-        }
-        .location strong, .date-time strong {
-             display: block;
-             margin-bottom: 8px;
-             color: #555;
-        }
-
-        /* --- Registration Form --- */
-        #registration-form {
-            background-color: #e8f5e9; /* Warna latar berbeda untuk bagian form */
-        }
-        #registration-form label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-        #registration-form input[type="text"],
-        #registration-form input[type="email"],
-        #registration-form input[type="tel"] {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-        #registration-form .disclaimer {
-             font-size: 0.8em;
-             color: #777;
-             margin-bottom: 15px;
-             text-align: center;
-        }
-
-        /* --- Call to Action (CTA) Button --- */
-        .cta-button {
-            display: block; /* Agar memenuhi lebar container form */
-            width: 100%; /* Atau atur lebar spesifik: max-width: 300px; margin: 0 auto; */
-            background-color: #FF9800; /* Warna tombol mencolok (oranye) */
-            color: #fff;
-            padding: 15px 20px;
-            text-align: center;
-            text-decoration: none;
-            font-size: 1.3em;
-            font-weight: bold;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            text-transform: uppercase;
-        }
-
-        .cta-button:hover {
-            background-color: #e68a00; /* Warna sedikit lebih gelap saat hover */
-        }
-         /* Tombol CTA di bagian lain (jika ada) */
-         .cta-link {
-            display: inline-block;
-            background-color: #FF9800;
-            color: #fff;
-            padding: 12px 25px;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            transition: background-color 0.3s ease;
-            margin-top: 15px; /* Jarak dari teks di atasnya */
-         }
-         .cta-link:hover {
-             background-color: #e68a00;
-         }
-         .center-cta { /* Untuk menengahkan link CTA jika diperlukan */
-            text-align: center;
-         }
-
-
-        /* --- Footer --- */
-        footer {
-            text-align: center;
-            padding: 20px;
-            font-size: 0.9em;
-            color: #777;
-            background-color: #eee;
-        }
-
-        /* --- Responsive Adjustments --- */
-        @media (max-width: 600px) {
-            .hero h1 {
-                font-size: 2em;
-            }
-            .hero .tagline {
-                font-size: 1em;
-            }
-            section h2 {
-                font-size: 1.5em;
-            }
-            .container {
-                 margin: 0;
-                 border-radius: 0;
-                 box-shadow: none;
-            }
-             section {
-                padding: 25px 15px;
-             }
-        }
-
-    </style>
+    <!-- Title and Meta Description will be updated by JS -->
+    <title data-translate="pageTitle">Klinik Bersepeda Akhir Pekan - Kuasai Sepeda & Keamanannya!</title>
+    <meta name="description" content="Ikuti klinik bersepeda akhir pekan kami! Belajar teknik dasar hingga keselamatan berkendara dari instruktur ahli. Cocok untuk pemula. Daftar sekarang!" data-translate="metaDescription">
+    <!-- Link CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
+    <!-- Language Switcher -->
+    <div class="lang-switcher">
+        <button data-lang="id" class="active">ID</button> | <!-- Default active -->
+        <button data-lang="en">EN</button>
+    </div>
+
+    <!-- Sticky Header -->
+    <header class="hero">
+        <h1 data-translate="heroTitle">Klinik Bersepeda Akhir Pekan</h1>
+        <p class="tagline" data-translate="heroTagline">Kuasai Dasar Bersepeda & Utamakan Keselamatan Bersama Ahlinya!</p>
+    </header>
+
+    <!-- Main Content Container -->
     <div class="container">
-
-        <header class="hero">
-            <h1>Klinik Bersepeda Akhir Pekan</h1>
-            <p class="tagline">Kuasai Dasar Bersepeda & Utamakan Keselamatan Bersama Ahlinya!</p>
-            <!-- Tambahkan gambar hero di sini jika ada (via CSS background atau tag <img>) -->
-        </header>
-
         <main>
             <section id="about" class="benefits">
-                <h2>Mengapa Bergabung Dengan Klinik Ini?</h2>
-                <p style="text-align: center; margin-bottom: 25px;">Apakah Anda ingin mulai bersepeda tapi bingung harus mulai dari mana? Atau ingin lebih percaya diri saat bersepeda di jalan? Klinik ini dirancang khusus untuk Anda!</p>
+                <h2 data-translate="whyJoinTitle">Mengapa Bergabung Dengan Klinik Ini?</h2>
+                <p style="text-align: center; margin-bottom: 25px;" data-translate="whyJoinIntro">Apakah Anda ingin mulai bersepeda tapi bingung harus mulai dari mana? Atau ingin lebih percaya diri saat bersepeda di jalan? Klinik ini dirancang khusus untuk Anda!</p>
                 <ul>
-                    <li>Belajar dari nol hingga bisa bersepeda dengan lancar.</li>
-                    <li>Memahami teknik dasar bersepeda yang benar (keseimbangan, pengereman, perpindahan gigi).</li>
-                    <li>Mendapatkan pengetahuan penting tentang keselamatan bersepeda di berbagai kondisi.</li>
-                    <li>Sesi teori yang ringkas dilanjutkan dengan banyak praktik langsung.</li>
-                    <li>Dibimbing langsung oleh instruktur bersepeda yang berpengalaman dan sabar.</li>
-                    <li>Suasana belajar yang santai, suportif, dan menyenangkan.</li>
+                    <li data-translate="benefit1">Belajar dari nol hingga bisa bersepeda dengan lancar.</li>
+                    <li data-translate="benefit2">Memahami teknik dasar bersepeda yang benar (keseimbangan, pengereman, perpindahan gigi).</li>
+                    <li data-translate="benefit3">Mendapatkan pengetahuan penting tentang keselamatan bersepeda di berbagai kondisi.</li>
+                    <li data-translate="benefit4">Sesi teori yang ringkas dilanjutkan dengan banyak praktik langsung.</li>
+                    <li data-translate="benefit5">Dibimbing langsung oleh instruktur bersepeda yang berpengalaman dan sabar.</li>
+                    <li data-translate="benefit6">Suasana belajar yang santai, suportif, dan menyenangkan.</li>
                 </ul>
                  <div class="center-cta">
-                     <a href="#registration-form" class="cta-link">Lihat Jadwal & Daftar!</a>
+                     <a href="#registration-form" class="cta-link" data-translate="seeScheduleButton">Lihat Jadwal & Daftar!</a>
                  </div>
             </section>
 
             <section id="topics">
-                <h2>Apa Saja yang Akan Dipelajari?</h2>
+                <h2 data-translate="topicsTitle">Apa Saja yang Akan Dipelajari?</h2>
                 <ul>
-                    <li><strong>Teori Singkat:</strong> Pengenalan jenis sepeda, komponen penting, dan perlengkapan keamanan (helm, dll.).</li>
-                    <li><strong>Praktik Dasar:</strong> Keseimbangan statis & dinamis, cara naik & turun sepeda, memulai & berhenti dengan mulus.</li>
-                    <li><strong>Teknik Berkendara:</strong> Mengayuh efisien, teknik pengereman yang aman, perpindahan gigi (jika sepeda mendukung).</li>
-                    <li><strong>Keselamatan Berkendara:</strong> Aturan lalu lintas dasar untuk pesepeda, isyarat tangan, memindai lingkungan, potensi bahaya.</li>
-                    <li><strong>Simulasi & Latihan:</strong> Praktik di area terkontrol (misal: lapangan) dan mungkin simulasi jalan raya sederhana.</li>
-                    <li><strong>Perawatan Dasar:</strong> Tips singkat merawat sepeda agar tetap prima (cek ban, rem, rantai).</li>
+                    <li data-translate="topic1"><strong>Teori Singkat:</strong> Pengenalan jenis sepeda, komponen penting, dan perlengkapan keamanan (helm, dll.).</li>
+                    <li data-translate="topic2"><strong>Praktik Dasar:</strong> Keseimbangan statis & dinamis, cara naik & turun sepeda, memulai & berhenti dengan mulus.</li>
+                    <li data-translate="topic3"><strong>Teknik Berkendara:</strong> Mengayuh efisien, teknik pengereman yang aman, perpindahan gigi (jika sepeda mendukung).</li>
+                    <li data-translate="topic4"><strong>Keselamatan Berkendara:</strong> Aturan lalu lintas dasar untuk pesepeda, isyarat tangan, memindai lingkungan, potensi bahaya.</li>
+                    <li data-translate="topic5"><strong>Simulasi & Latihan:</strong> Praktik di area terkontrol (misal: lapangan) dan mungkin simulasi jalan raya sederhana.</li>
+                    <li data-translate="topic6"><strong>Perawatan Dasar:</strong> Tips singkat merawat sepeda agar tetap prima (cek ban, rem, rantai).</li>
                 </ul>
             </section>
 
             <section id="schedule" class="schedule">
-                <h2>Jadwal Acara (Contoh)</h2>
+                <h2 data-translate="scheduleTitle">Jadwal Acara (Contoh)</h2>
                 <ol>
-                    <li><strong>Hari 1 (Sabtu): Fokus Dasar & Teknik</strong>
-                        <br>08:00 - 09:00: Registrasi & Pengenalan Teori Dasar
-                        <br>09:00 - 12:00: Praktik Keseimbangan, Mulai & Berhenti
-                        <br>12:00 - 13:00: Istirahat
-                        <br>13:00 - 15:00: Praktik Mengayuh, Pengereman, Belok
-                    </li>
-                    <li><strong>Hari 2 (Minggu): Fokus Keselamatan & Aplikasi</strong>
-                        <br>08:00 - 09:00: Teori Keselamatan & Aturan Berkendara
-                        <br>09:00 - 12:00: Praktik Isyarat Tangan, Memindai, Simulasi Jalan
-                        <br>12:00 - 13:00: Istirahat & Tanya Jawab
-                        <br>13:00 - 14:30: Latihan Terpadu & Tips Perawatan
-                        <br>14:30 - 15:00: Penutupan & Foto Bersama
-                    </li>
+                    <li data-translate="scheduleDay1"><strong>Hari 1 (Sabtu): Fokus Dasar & Teknik</strong><br>08:00 - 09:00: Registrasi & Pengenalan Teori Dasar<br>09:00 - 12:00: Praktik Keseimbangan, Mulai & Berhenti<br>12:00 - 13:00: Istirahat<br>13:00 - 15:00: Praktik Mengayuh, Pengereman, Belok</li>
+                    <li data-translate="scheduleDay2"><strong>Hari 2 (Minggu): Fokus Keselamatan & Aplikasi</strong><br>08:00 - 09:00: Teori Keselamatan & Aturan Berkendara<br>09:00 - 12:00: Praktik Isyarat Tangan, Memindai, Simulasi Jalan<br>12:00 - 13:00: Istirahat & Tanya Jawab<br>13:00 - 14:30: Latihan Terpadu & Tips Perawatan<br>14:30 - 15:00: Penutupan & Foto Bersama</li>
                 </ol>
-                 <p style="text-align:center; margin-top:15px; font-style:italic;">*Jadwal rinci akan diberikan setelah pendaftaran.</p>
+                 <p style="text-align:center; margin-top:15px; font-style:italic;" data-translate="scheduleNote">*Jadwal rinci akan diberikan setelah pendaftaran.</p>
             </section>
 
             <section id="instructors" class="instructors">
-                <h2>Instruktur Ahli Kami</h2>
-                 <!-- Ulangi blok .instructor untuk setiap instruktur -->
+                <h2 data-translate="instructorsTitle">Instruktur Ahli Kami</h2>
                 <div class="instructor">
-                    <img src="placeholder-instructor1.png" alt="Foto Instruktur 1"> <!-- Ganti dengan URL gambar asli -->
-                    <h4>[Nama Instruktur 1]</h4>
-                    <p>Pengalaman 10+ tahun dalam pelatihan sepeda & safety riding. Bersertifikat [Sebutkan Sertifikasi jika ada].</p>
+                    <img src="placeholder-instructor1.png" alt="Foto Instruktur 1">
+                    <h4 data-translate="instructor1Name">[Nama Instruktur 1]</h4>
+                    <p data-translate="instructor1Desc">Pengalaman 10+ tahun dalam pelatihan sepeda & safety riding. Bersertifikat [Sebutkan Sertifikasi jika ada].</p>
                 </div>
                 <div class="instructor">
-                     <img src="placeholder-instructor2.png" alt="Foto Instruktur 2"> <!-- Ganti dengan URL gambar asli -->
-                    <h4>[Nama Instruktur 2]</h4>
-                    <p>Atlet sepeda / pegiat komunitas sepeda aktif. Ahli dalam teknik bersepeda efisien dan aman di perkotaan.</p>
+                     <img src="placeholder-instructor2.png" alt="Foto Instruktur 2">
+                    <h4 data-translate="instructor2Name">[Nama Instruktur 2]</h4>
+                    <p data-translate="instructor2Desc">Atlet sepeda / pegiat komunitas sepeda aktif. Ahli dalam teknik bersepeda efisien dan aman di perkotaan.</p>
                 </div>
-                 <!-- Akhir blok instruktur -->
             </section>
 
              <section id="logistics">
+                 <h2 data-translate="logisticsTitle" style="display: none;">Logistics</h2> <!-- Hidden H2 for structure if needed -->
                  <div style="display: flex; justify-content: space-around; flex-wrap: wrap;">
                      <div class="date-time" style="flex-basis: 45%; margin-bottom: 20px;">
-                        <h2>Tanggal & Waktu</h2>
-                        <p><strong>[Tanggal Mulai] - [Tanggal Selesai]</strong></p>
-                        <p>(Sabtu & Minggu)</p>
-                        <p>Pukul 08:00 - 15:00 WIB</p>
+                        <h3 data-translate="dateTimeTitle">Tanggal & Waktu</h3>
+                        <p data-translate="dateTimeDetail1"><strong>[Tanggal Mulai] - [Tanggal Selesai]</strong></p>
+                        <p data-translate="dateTimeDetail2">(Sabtu & Minggu)</p>
+                        <p data-translate="dateTimeDetail3">Pukul 08:00 - 15:00 WIB</p>
                     </div>
                     <div class="location" style="flex-basis: 45%; margin-bottom: 20px;">
-                        <h2>Lokasi</h2>
-                        <p><strong>[Nama Tempat]</strong></p>
-                        <p>[Alamat Lengkap Lokasi]</p>
-                        <p>(Area luas dan aman untuk latihan)</p>
+                        <h3 data-translate="locationTitle">Lokasi</h3>
+                        <p data-translate="locationDetail1"><strong>[Nama Tempat]</strong></p>
+                        <p data-translate="locationDetail2">[Alamat Lengkap Lokasi]</p>
+                        <p data-translate="locationDetail3">(Area luas dan aman untuk latihan)</p>
                     </div>
                  </div>
-                   <p style="text-align: center; margin-top: 10px; font-weight:bold;">Biaya Investasi: <strong>[Sebutkan Harga]</strong> / Peserta</p>
-                   <p style="text-align: center; font-size: 0.9em;">(Termasuk: Materi, Snack, Sertifikat Digital, Pendampingan Instruktur)</p>
+                   <p style="text-align: center; margin-top: 10px;">
+                       <span data-translate="investmentLabel">Biaya Investasi:</span>
+                       <span data-translate="investmentPrice"><strong>[Sebutkan Harga]</strong> / Peserta</span>
+                   </p>
+                   <p style="text-align: center; font-size: 0.9em;" data-translate="investmentIncludes">(Termasuk: Materi, Snack, Sertifikat Digital, Pendampingan Instruktur)</p>
              </section>
 
 
             <section id="registration-form">
-                <h2>Daftar Sekarang! Tempat Terbatas!</h2>
-                <p style="text-align: center; margin-bottom: 25px;">Amankan tempat Anda di Klinik Bersepeda Akhir Pekan ini. Isi formulir di bawah untuk mendaftar.</p>
+                <h2 data-translate="registrationTitle">Daftar Sekarang! Tempat Terbatas!</h2>
+                <p style="text-align: center; margin-bottom: 25px;" data-translate="registrationIntro">Amankan tempat Anda di Klinik Bersepeda Akhir Pekan ini. Isi formulir di bawah untuk mendaftar.</p>
 
-                <form action="#" method="POST"> <!-- action="#" HANYA untuk demo statis -->
-                    <label for="nama">Nama Lengkap:</label>
-                    <input type="text" id="nama" name="nama" required placeholder="Masukkan nama lengkap Anda">
+                <form action="#" method="POST">
+                    <label for="nama" data-translate="formNameLabel">Nama Lengkap:</label>
+                    <input type="text" id="nama" name="nama" required data-translate="formNamePlaceholder" placeholder="Masukkan nama lengkap Anda">
 
-                    <label for="email">Alamat Email:</label>
-                    <input type="email" id="email" name="email" required placeholder="cth: nama@email.com">
+                    <label for="email" data-translate="formEmailLabel">Alamat Email:</label>
+                    <input type="email" id="email" name="email" required data-translate="formEmailPlaceholder" placeholder="cth: nama@email.com">
 
-                    <label for="telepon">Nomor WhatsApp (Aktif):</label>
-                    <input type="tel" id="telepon" name="telepon" required placeholder="cth: 081234567890">
+                    <label for="telepon" data-translate="formPhoneLabel">Nomor WhatsApp (Aktif):</label>
+                    <input type="tel" id="telepon" name="telepon" required data-translate="formPhonePlaceholder" placeholder="cth: 081234567890">
 
-                     <!-- Tambahkan field lain jika perlu (misal: ukuran kaos, pengalaman bersepeda, dll.) -->
+                    <p class="disclaimer" data-translate="formDisclaimer">Dengan menekan tombol 'Daftar Sekarang', Anda setuju dengan Syarat & Ketentuan kami. Informasi pembayaran akan dikirimkan ke email Anda setelah pendaftaran.</p>
 
-                    <p class="disclaimer">Dengan menekan tombol 'Daftar Sekarang', Anda setuju dengan Syarat & Ketentuan kami. Informasi pembayaran akan dikirimkan ke email Anda setelah pendaftaran.</p>
-
-                    <!-- Tombol ini belum berfungsi mengirim data -->
-                    <button type="submit" class="cta-button">Daftar Sekarang</button>
-                    <p style="text-align:center; font-size:0.8em; margin-top:10px; color: #d32f2f;">(Tombol ini belum aktif - Backend diperlukan)</p>
+                    <button type="submit" class="cta-button" data-translate="registerButton">Daftar Sekarang</button>
+                    <p id="inactive-note" style="text-align:center; font-size:0.8em; margin-top:10px; color: #d32f2f;" data-translate="buttonInactiveNote">(Tombol ini belum aktif - Backend diperlukan)</p>
                 </form>
             </section>
 
-            <!-- Opsional: Tambahkan bagian FAQ jika perlu -->
              <section id="faq">
-                <h2>Pertanyaan Umum (FAQ)</h2>
+                <h2 data-translate="faqTitle">Pertanyaan Umum (FAQ)</h2>
                 <details>
-                    <summary style="font-weight: bold; cursor: pointer; margin-bottom: 10px;">Apakah saya perlu membawa sepeda sendiri?</summary>
-                    <p style="padding-left: 15px; margin-top: 5px;">Ya, disarankan membawa sepeda pribadi agar terbiasa. Jika tidak punya, harap hubungi kami untuk opsi penyewaan (jika tersedia).</p>
+                    <summary data-translate="faq1Question">Apakah saya perlu membawa sepeda sendiri?</summary>
+                    <p data-translate="faq1Answer">Ya, disarankan membawa sepeda pribadi agar terbiasa. Jika tidak punya, harap hubungi kami untuk opsi penyewaan (jika tersedia).</p>
                 </details>
                  <details style="margin-top:15px;">
-                    <summary style="font-weight: bold; cursor: pointer; margin-bottom: 10px;">Apakah klinik ini cocok untuk anak-anak?</summary>
-                    <p style="padding-left: 15px; margin-top: 5px;">Klinik ini dirancang untuk [Sebutkan Target Usia, misal: dewasa dan remaja usia 15 tahun ke atas]. Untuk kelas anak-anak, silakan hubungi kami.</p>
+                    <summary data-translate="faq2Question">Apakah klinik ini cocok untuk anak-anak?</summary>
+                    <p data-translate="faq2Answer">Klinik ini dirancang untuk [Sebutkan Target Usia, misal: dewasa dan remaja usia 15 tahun ke atas]. Untuk kelas anak-anak, silakan hubungi kami.</p>
                 </details>
-                 <!-- Tambahkan pertanyaan lain -->
             </section>
-
         </main>
+    </div> <!-- End .container -->
 
-        <footer>
-            <p>© 2024 [Nama Penyelenggara Anda]. Semua Hak Cipta Dilindungi.</p>
-            <p>Ada pertanyaan? Hubungi kami di: <a href="mailto:info@domainanda.com">info@domainanda.com</a> atau WA: [Nomor Kontak Anda]</p>
-        </footer>
+    <footer>
+        <p data-translate="footerCopyright">© 2024 [Nama Penyelenggara Anda]. Semua Hak Cipta Dilindungi.</p>
+        <p data-translate="footerContact">Ada pertanyaan? Hubungi kami di: <a href="mailto:[Email Anda]">[Email Anda]</a> atau WA: [Nomor Kontak Anda]</p>
+    </footer>
 
-    </div>
-
+    <!-- Link JavaScript -->
+    <script src="assets/js/script.js"></script>
 </body>
 </html>
