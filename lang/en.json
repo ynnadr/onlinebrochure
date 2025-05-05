@@ -40,6 +40,8 @@
   "investmentLabel": "Investment Fee:",
   "investmentPrice": "<strong>[State Price]</strong> / Participant",
   "investmentIncludes": "(Includes: Materials, Snacks, Digital Certificate, Instructor Guidance)",
+  "backButton": "← Back",
+  "registerNowNav": "Register Now"
   "registrationTitle": "Register Now! Limited Spots!",
   "registrationIntro": "Secure your spot in this Weekend Biking Clinic. Fill out the form below to register.",
   "formNameLabel": "Full Name:",
