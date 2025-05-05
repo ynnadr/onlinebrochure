@@ -30,8 +30,7 @@
         <header class="hero">
             <h1 data-translate="heroTitle">Klinik Bersepeda Akhir Pekan</h1>
             <p class="tagline" data-translate="heroTagline">Kuasai Dasar Bersepeda & Utamakan Keselamatan Bersama Ahlinya!</p>
-            <!-- Optional: Add a primary Register button here -->
-             <button id="show-register-btn-header" class="cta-link hero-cta" data-translate="registerNowNav">Daftar Sekarang</button>
+            <button id="show-register-btn-header" class="cta-link hero-cta" data-translate="registerNowNav">Daftar Sekarang</button>
         </header>
 
         <main>
@@ -51,7 +50,6 @@
                         <li data-translate="benefit6">Suasana belajar yang santai, suportif, dan menyenangkan.</li>
                     </ul>
                     <div class="center-cta">
-                        <!-- This link will now also trigger the registration form view -->
                         <a href="#" id="trigger-register-view" class="cta-link" data-translate="seeScheduleButton">Lihat Jadwal & Daftar!</a>
                     </div>
                 </section>
@@ -135,6 +133,11 @@
                     </details>
                 </section>
 
+                 <!-- Final Call to Action Section (Inside main-content) -->
+                <section class="final-cta-section">
+                    <button id="show-register-btn-footer" class="cta-button" data-translate="registerNowFooter">Daftar Sekarang Juga!</button>
+                </section>
+
             </div> <!-- End #main-content -->
 
             <!-- Section: Registration Form (Initially Hidden) -->
@@ -143,7 +146,7 @@
                 <h2 data-translate="registrationTitle">Daftar Sekarang! Tempat Terbatas!</h2>
                 <p style="text-align: center; margin-bottom: 25px;" data-translate="registrationIntro">Amankan tempat Anda di Klinik Bersepeda Akhir Pekan ini. Isi formulir di bawah untuk mendaftar.</p>
 
-                <form action="#" method="POST">
+                <form action="#" method="POST"> <!-- GANTI action="#" dengan URL backend/layanan form Anda -->
                     <label for="nama" data-translate="formNameLabel">Nama Lengkap:</label>
                     <input type="text" id="nama" name="nama" required data-translate="formNamePlaceholder" placeholder="Masukkan nama lengkap Anda">
 
@@ -155,6 +158,7 @@
 
                     <p class="disclaimer" data-translate="formDisclaimer">Dengan menekan tombol 'Daftar Sekarang', Anda setuju dengan Syarat & Ketentuan kami. Informasi pembayaran akan dikirimkan ke email Anda setelah pendaftaran.</p>
 
+                    <!-- Tombol Submit Form (Warna Biru) -->
                     <button type="submit" class="cta-button" data-translate="registerButton">Daftar Sekarang</button>
                     <p id="inactive-note" style="text-align:center; font-size:0.8em; margin-top:10px; color: #d32f2f;" data-translate="buttonInactiveNote">(Tombol ini belum aktif - Backend diperlukan)</p>
                 </form>
