@@ -3,95 +3,193 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Title and Meta Description will be updated by JS -->
     <title data-translate="pageTitle">Klinik Bersepeda Akhir Pekan - Kuasai Sepeda & Keamanannya!</title>
     <meta name="description" content="Ikuti klinik bersepeda akhir pekan kami! Belajar teknik dasar hingga keselamatan berkendara dari instruktur ahli. Cocok untuk pemula. Daftar sekarang!" data-translate="metaDescription">
+    <!-- Google Fonts (Example: Poppins & Lato) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <!-- Link CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
+    <!-- Add Font Awesome (Optional, for better icons) -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> -->
 </head>
 <body>
 
+    <!-- Language Switcher -->
     <div class="lang-switcher">
-        <button data-lang="id" class="active">ID</button> |
+        <button data-lang="id" class="active">ID</button> | <!-- Default active -->
         <button data-lang="en">EN</button>
     </div>
 
+    <!-- Main Content Container -->
     <div class="container">
 
+        <!-- Header (Inside container, Non-Sticky, Green BG) -->
         <header class="hero">
             <!-- Konten Asli Hero (Akan disembunyikan saat form aktif) -->
             <div id="hero-original-content">
                 <h1 data-translate="heroTitle">Klinik Bersepeda Akhir Pekan</h1>
                 <p class="tagline" data-translate="heroTagline">Kuasai Dasar Bersepeda & Utamakan Keselamatan Bersama Ahlinya!</p>
+                <!-- Hero CTA Button (Yellow/Amber) -->
                 <button id="show-register-btn-header" class="hero-cta" data-translate="registerNowNav">Daftar Sekarang</button>
             </div>
-            <!-- Tombol Kembali Baru (Disembunyikan secara default) -->
+            <!-- Tombol Kembali Baru (Disembunyikan secara default, muncul saat form aktif) -->
             <button id="hero-back-btn" class="back-button-hero visually-hidden" data-translate="backButton">← Kembali</button>
         </header>
 
         <main>
-            <!-- Wrapper Konten Utama -->
+            <!-- Wrapper for main content sections (toggled by JS) -->
             <div id="main-content">
+
                 <!-- Section: Why Join -->
                 <section id="about" class="benefits">
                     <h2 data-translate="whyJoinTitle">Mengapa Bergabung Dengan Klinik Ini?</h2>
                     <p style="text-align: center; margin-bottom: 25px;" data-translate="whyJoinIntro">Apakah Anda ingin mulai bersepeda tapi bingung harus mulai dari mana? Atau ingin lebih percaya diri saat bersepeda di jalan? Klinik ini dirancang khusus untuk Anda!</p>
-                    <ul> <li data-translate="benefit1">...</li> <li data-translate="benefit2">...</li> <li data-translate="benefit3">...</li> <li data-translate="benefit4">...</li> <li data-translate="benefit5">...</li> <li data-translate="benefit6">...</li> </ul>
-                    <div class="center-cta"> <a href="#" id="trigger-register-view" class="cta-link" data-translate="seeScheduleButton">Lihat Jadwal & Daftar!</a> </div>
+                    <ul>
+                        <li data-translate="benefit1">Belajar dari nol hingga bisa bersepeda dengan lancar.</li>
+                        <li data-translate="benefit2">Memahami teknik dasar bersepeda yang benar (keseimbangan, pengereman, perpindahan gigi).</li>
+                        <li data-translate="benefit3">Mendapatkan pengetahuan penting tentang keselamatan bersepeda di berbagai kondisi.</li>
+                        <li data-translate="benefit4">Sesi teori yang ringkas dilanjutkan dengan banyak praktik langsung.</li>
+                        <li data-translate="benefit5">Dibimbing langsung oleh instruktur bersepeda yang berpengalaman dan sabar.</li>
+                        <li data-translate="benefit6">Suasana belajar yang santai, suportif, dan menyenangkan.</li>
+                    </ul>
+                    <div class="center-cta">
+                        <!-- Secondary CTA (Orange Outline), also triggers registration view -->
+                        <a href="#" id="trigger-register-view" class="cta-link" data-translate="seeScheduleButton">Lihat Jadwal & Daftar!</a>
+                    </div>
                 </section>
+
                 <!-- Section: Topics -->
-                <section id="topics"> <h2 data-translate="topicsTitle">...</h2> <ul> <li data-translate="topic1">...</li> <li data-translate="topic2">...</li> <li data-translate="topic3">...</li> <li data-translate="topic4">...</li> <li data-translate="topic5">...</li> <li data-translate="topic6">...</li> </ul> </section>
+                <section id="topics">
+                    <h2 data-translate="topicsTitle">Apa Saja yang Akan Dipelajari?</h2>
+                    <ul>
+                        <li data-translate="topic1"><strong>Teori Singkat:</strong> Pengenalan jenis sepeda, komponen penting, dan perlengkapan keamanan (helm, dll.).</li>
+                        <li data-translate="topic2"><strong>Praktik Dasar:</strong> Keseimbangan statis & dinamis, cara naik & turun sepeda, memulai & berhenti dengan mulus.</li>
+                        <li data-translate="topic3"><strong>Teknik Berkendara:</strong> Mengayuh efisien, teknik pengereman yang aman, perpindahan gigi (jika sepeda mendukung).</li>
+                        <li data-translate="topic4"><strong>Keselamatan Berkendara:</strong> Aturan lalu lintas dasar untuk pesepeda, isyarat tangan, memindai lingkungan, potensi bahaya.</li>
+                        <li data-translate="topic5"><strong>Simulasi & Latihan:</strong> Praktik di area terkontrol (misal: lapangan) dan mungkin simulasi jalan raya sederhana.</li>
+                        <li data-translate="topic6"><strong>Perawatan Dasar:</strong> Tips singkat merawat sepeda agar tetap prima (cek ban, rem, rantai).</li>
+                    </ul>
+                </section>
+
                 <!-- Section: Schedule -->
-                <section id="schedule" class="schedule"> <h2 data-translate="scheduleTitle">...</h2> <ol> <li data-translate="scheduleDay1">...</li> <li data-translate="scheduleDay2">...</li> </ol> <p style="text-align:center; margin-top:15px; font-style:italic;" data-translate="scheduleNote">...</p> </section>
+                <section id="schedule" class="schedule">
+                    <h2 data-translate="scheduleTitle">Jadwal Acara (Contoh)</h2>
+                    <ol>
+                        <li data-translate="scheduleDay1"><strong>Hari 1 (Sabtu): Fokus Dasar & Teknik</strong><br>08:00 - 09:00: Registrasi & Pengenalan Teori Dasar<br>09:00 - 12:00: Praktik Keseimbangan, Mulai & Berhenti<br>12:00 - 13:00: Istirahat<br>13:00 - 15:00: Praktik Mengayuh, Pengereman, Belok</li>
+                        <li data-translate="scheduleDay2"><strong>Hari 2 (Minggu): Fokus Keselamatan & Aplikasi</strong><br>08:00 - 09:00: Teori Keselamatan & Aturan Berkendara<br>09:00 - 12:00: Praktik Isyarat Tangan, Memindai, Simulasi Jalan<br>12:00 - 13:00: Istirahat & Tanya Jawab<br>13:00 - 14:30: Latihan Terpadu & Tips Perawatan<br>14:30 - 15:00: Penutupan & Foto Bersama</li>
+                    </ol>
+                    <p style="text-align:center; margin-top:15px; font-style:italic;" data-translate="scheduleNote">*Jadwal rinci akan diberikan setelah pendaftaran.</p>
+                </section>
+
                 <!-- Section: Instructors -->
-                <section id="instructors" class="instructors"> <h2 data-translate="instructorsTitle">...</h2> <div class="instructor-grid"> <div class="instructor"> <img src="images/placeholder-instructor1.jpg" alt="..."> <h4 data-translate="instructor1Name">...</h4> <p data-translate="instructor1Desc">...</p> </div> <div class="instructor"> <img src="images/placeholder-instructor2.jpg" alt="..."> <h4 data-translate="instructor2Name">...</h4> <p data-translate="instructor2Desc">...</p> </div> </div> </section>
-                <!-- Section: FAQ -->
-                <section id="faq"> <h2 data-translate="faqTitle">...</h2> <details> <summary data-translate="faq1Question">...</summary> <p data-translate="faq1Answer">...</p> </details> <details> <summary data-translate="faq2Question">...</summary> <p data-translate="faq2Answer">...</p> </details> </section>
-                <!-- Final Call to Action Section -->
-                <section class="final-cta-section"> <button id="show-register-btn-footer" class="hero-cta" data-translate="registerNowFooter">Daftar Sekarang Juga!</button> </section>
+                <section id="instructors" class="instructors">
+                    <h2 data-translate="instructorsTitle">Instruktur Ahli Kami</h2>
+                    <div class="instructor-grid">
+                        <div class="instructor">
+                            <img src="images/placeholder-instructor1.jpg" alt="Foto Instruktur 1"> <!-- GANTI GAMBAR & ALT -->
+                            <h4 data-translate="instructor1Name">[Nama Instruktur 1]</h4> <!-- GANTI NAMA -->
+                            <p data-translate="instructor1Desc">Pengalaman 10+ tahun dalam pelatihan sepeda & safety riding. Bersertifikat [Sebutkan Sertifikasi jika ada].</p> <!-- GANTI DESKRIPSI -->
+                        </div>
+                        <div class="instructor">
+                             <img src="images/placeholder-instructor2.jpg" alt="Foto Instruktur 2"> <!-- GANTI GAMBAR & ALT -->
+                            <h4 data-translate="instructor2Name">[Nama Instruktur 2]</h4> <!-- GANTI NAMA -->
+                            <p data-translate="instructor2Desc">Atlet sepeda / pegiat komunitas sepeda aktif. Ahli dalam teknik bersepeda efisien dan aman di perkotaan.</p> <!-- GANTI DESKRIPSI -->
+                        </div>
+                        <!-- Tambahkan instruktur lain jika perlu -->
+                    </div>
+                </section>
+
+                 <!-- Section: FAQ -->
+                 <section id="faq">
+                    <h2 data-translate="faqTitle">Pertanyaan Umum (FAQ)</h2>
+                    <details>
+                        <summary data-translate="faq1Question">Apakah saya perlu membawa sepeda sendiri?</summary>
+                        <p data-translate="faq1Answer">Ya, disarankan membawa sepeda pribadi agar terbiasa. Jika tidak punya, harap hubungi kami untuk opsi penyewaan (jika tersedia).</p> <!-- SESUAIKAN JAWABAN -->
+                    </details>
+                     <details>
+                        <summary data-translate="faq2Question">Apakah klinik ini cocok untuk anak-anak?</summary>
+                        <p data-translate="faq2Answer">Klinik ini dirancang untuk [Sebutkan Target Usia, misal: dewasa dan remaja usia 15 tahun ke atas]. Untuk kelas anak-anak, silakan hubungi kami.</p> <!-- SESUAIKAN TARGET USIA & JAWABAN -->
+                    </details>
+                     <!-- Tambahkan FAQ lain jika perlu -->
+                </section>
+
+                 <!-- Final Call to Action Section (Inside main-content) -->
+                <section class="final-cta-section">
+                    <!-- Button style matches Hero CTA (Yellow/Amber) -->
+                    <button id="show-register-btn-footer" class="hero-cta" data-translate="registerNowFooter">Daftar Sekarang Juga!</button>
+                </section>
+
             </div> <!-- End #main-content -->
 
             <!-- Section: Registration Form (Initially Hidden) -->
             <section id="registration-form" style="display: none;">
-                <!-- Tombol Kembali Lama Dihapus dari sini -->
-                <!-- <button id="back-to-main-btn" class="back-button" data-translate="backButton">← Kembali</button> -->
+                <!-- Tombol Kembali Lama sudah dihapus -->
 
-                <!-- Section Logistics di dalam Form -->
+                <!-- === SECTION LOGISTICS MOVED HERE === -->
                 <section id="logistics" class="logistics-in-form">
-                    <h2 data-translate="logisticsTitle" style="display: none;">Logistics</h2>
-                    <h3 data-translate="dateTimeTitle" style="text-align:center; margin-bottom:20px;">Detail Waktu & Tempat</h3>
+                    <h2 data-translate="logisticsTitle" style="display: none;">Logistics</h2> <!-- Original title hidden -->
+                    <h3 data-translate="dateTimeTitle" style="text-align:center; margin-bottom:20px;">Detail Waktu & Tempat</h3> <!-- New Title -->
                     <div class="logistics-grid">
-                        <div class="date-time"> <p data-translate="dateTimeDetail1"><strong>[Tanggal Mulai] - [Tanggal Selesai]</strong></p> <p data-translate="dateTimeDetail2">(Sabtu & Minggu)</p> <p data-translate="dateTimeDetail3">Pukul 08:00 - 15:00 WIB</p> </div>
-                        <div class="location"> <p data-translate="locationDetail1"><strong>[Nama Tempat]</strong></p> <p data-translate="locationDetail2">[Alamat Lengkap Lokasi]</p> <p data-translate="locationDetail3">(Area luas dan aman untuk latihan)</p> </div>
+                         <div class="date-time">
+                            <p data-translate="dateTimeDetail1"><strong>[Tanggal Mulai] - [Tanggal Selesai]</strong></p> <!-- GANTI TANGGAL -->
+                            <p data-translate="dateTimeDetail2">(Sabtu & Minggu)</p>
+                            <p data-translate="dateTimeDetail3">Pukul 08:00 - 15:00 WIB</p> <!-- SESUAIKAN WAKTU & ZONA -->
+                        </div>
+                        <div class="location">
+                            <p data-translate="locationDetail1"><strong>[Nama Tempat]</strong></p> <!-- GANTI NAMA TEMPAT -->
+                            <p data-translate="locationDetail2">[Alamat Lengkap Lokasi]</p> <!-- GANTI ALAMAT -->
+                            <p data-translate="locationDetail3">(Area luas dan aman untuk latihan)</p>
+                        </div>
                     </div>
-                    <div class="investment"> <p> <span data-translate="investmentLabel">Biaya Investasi:</span> <span data-translate="investmentPrice"><strong>[Sebutkan Harga]</strong> / Peserta</span> </p> <p data-translate="investmentIncludes">(Termasuk: ...)</p> </div>
+                    <div class="investment">
+                       <p>
+                           <span data-translate="investmentLabel">Biaya Investasi:</span>
+                           <span data-translate="investmentPrice"><strong>[Sebutkan Harga]</strong> / Peserta</span> <!-- GANTI HARGA -->
+                       </p>
+                       <p data-translate="investmentIncludes">(Termasuk: Materi, Snack, Sertifikat Digital, Pendampingan Instruktur)</p> <!-- SESUAIKAN YANG TERMASUK -->
+                    </div>
                 </section>
+                <!-- === END SECTION LOGISTICS === -->
 
-                <!-- Judul Form Registrasi -->
+                <!-- Registration Form Title -->
                 <h2 data-translate="registrationTitle" style="margin-top: 40px;">Daftar Sekarang! Tempat Terbatas!</h2>
-                <p style="text-align: center; margin-bottom: 25px;" data-translate="registrationIntro">Amankan tempat Anda...</p>
+                <p style="text-align: center; margin-bottom: 25px;" data-translate="registrationIntro">Amankan tempat Anda di Klinik Bersepeda Akhir Pekan ini. Isi formulir di bawah untuk mendaftar.</p>
 
-                <!-- Form -->
-                <form action="#" method="POST">
-                    <label for="nama" data-translate="formNameLabel">Nama Lengkap:</label> <input type="text" id="nama" name="nama" required data-translate="formNamePlaceholder" placeholder="...">
-                    <label for="email" data-translate="formEmailLabel">Alamat Email:</label> <input type="email" id="email" name="email" required data-translate="formEmailPlaceholder" placeholder="...">
-                    <label for="telepon" data-translate="formPhoneLabel">Nomor WhatsApp (Aktif):</label> <input type="tel" id="telepon" name="telepon" required data-translate="formPhonePlaceholder" placeholder="...">
-                    <p class="disclaimer" data-translate="formDisclaimer">Dengan menekan tombol...</p>
+                <!-- The Form -->
+                <form action="#" method="POST"> <!-- GANTI action="#" dengan URL backend/layanan form Anda -->
+                    <label for="nama" data-translate="formNameLabel">Nama Lengkap:</label>
+                    <input type="text" id="nama" name="nama" required data-translate="formNamePlaceholder" placeholder="Masukkan nama lengkap Anda">
+
+                    <label for="email" data-translate="formEmailLabel">Alamat Email:</label>
+                    <input type="email" id="email" name="email" required data-translate="formEmailPlaceholder" placeholder="cth: nama@email.com">
+
+                    <label for="telepon" data-translate="formPhoneLabel">Nomor WhatsApp (Aktif):</label>
+                    <input type="tel" id="telepon" name="telepon" required data-translate="formPhonePlaceholder" placeholder="cth: 081234567890">
+
+                    <!-- Tambahkan field lain jika perlu -->
+
+                    <p class="disclaimer" data-translate="formDisclaimer">Dengan menekan tombol 'Daftar Sekarang', Anda setuju dengan Syarat & Ketentuan kami. Informasi pembayaran akan dikirimkan ke email Anda setelah pendaftaran.</p>
+
+                    <!-- Form Submit Button (Blue) -->
                     <button type="submit" class="cta-button" data-translate="registerButton">Daftar Sekarang</button>
-                    <p id="inactive-note" style="text-align:center; font-size:0.8em; margin-top:10px; color: #d32f2f;" data-translate="buttonInactiveNote">(Tombol ini belum aktif...)</p>
+                    <p id="inactive-note" style="text-align:center; font-size:0.8em; margin-top:10px; color: #d32f2f;" data-translate="buttonInactiveNote">(Tombol ini belum aktif - Backend diperlukan)</p>
                 </form>
             </section> <!-- End #registration-form -->
 
         </main>
     </div> <!-- End .container -->
 
+    <!-- Footer -->
     <footer>
-        <!-- UPDATE COPYRIGHT DI SINI -->
+        <!-- Copyright Teks Telah Diubah -->
         <p data-translate="footerCopyright">© 2025 Bogor Mountain Biking</p>
-        <p data-translate="footerContact">Ada pertanyaan? Hubungi kami di: <a href="mailto:[Email Anda]">[Email Anda]</a> atau WA: [Nomor Kontak Anda]</p>
+        <p data-translate="footerContact">Ada pertanyaan? Hubungi kami di: <a href="mailto:[Email Anda]">[Email Anda]</a> atau WA: [Nomor Kontak Anda]</p> <!-- GANTI EMAIL & KONTAK -->
     </footer>
 
+    <!-- Link JavaScript -->
     <script src="assets/js/script.js"></script>
 </body>
 </html>
