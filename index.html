@@ -30,7 +30,7 @@
         <header class="hero">
             <h1 data-translate="heroTitle">Klinik Bersepeda Akhir Pekan</h1>
             <p class="tagline" data-translate="heroTagline">Kuasai Dasar Bersepeda & Utamakan Keselamatan Bersama Ahlinya!</p>
-            <!-- Hero CTA Button (Yellow/Amber) -->
+            <!-- Hero CTA Button (Yellow/Amber), will be hidden when form is active -->
             <button id="show-register-btn-header" class="hero-cta" data-translate="registerNowNav">Daftar Sekarang</button>
         </header>
 
@@ -84,41 +84,15 @@
                     <h2 data-translate="instructorsTitle">Instruktur Ahli Kami</h2>
                     <div class="instructor-grid">
                         <div class="instructor">
-                            <img src="images/placeholder-instructor1.jpg" alt="Foto Instruktur 1">
-                            <h4 data-translate="instructor1Name">[Nama Instruktur 1]</h4>
-                            <p data-translate="instructor1Desc">Pengalaman 10+ tahun dalam pelatihan sepeda & safety riding. Bersertifikat [Sebutkan Sertifikasi jika ada].</p>
+                            <img src="images/placeholder-instructor1.jpg" alt="Foto Instruktur 1"> <!-- GANTI GAMBAR & ALT -->
+                            <h4 data-translate="instructor1Name">[Nama Instruktur 1]</h4> <!-- GANTI NAMA -->
+                            <p data-translate="instructor1Desc">Pengalaman 10+ tahun dalam pelatihan sepeda & safety riding. Bersertifikat [Sebutkan Sertifikasi jika ada].</p> <!-- GANTI DESKRIPSI -->
                         </div>
                         <div class="instructor">
-                             <img src="images/placeholder-instructor2.jpg" alt="Foto Instruktur 2">
-                            <h4 data-translate="instructor2Name">[Nama Instruktur 2]</h4>
-                            <p data-translate="instructor2Desc">Atlet sepeda / pegiat komunitas sepeda aktif. Ahli dalam teknik bersepeda efisien dan aman di perkotaan.</p>
+                             <img src="images/placeholder-instructor2.jpg" alt="Foto Instruktur 2"> <!-- GANTI GAMBAR & ALT -->
+                            <h4 data-translate="instructor2Name">[Nama Instruktur 2]</h4> <!-- GANTI NAMA -->
+                            <p data-translate="instructor2Desc">Atlet sepeda / pegiat komunitas sepeda aktif. Ahli dalam teknik bersepeda efisien dan aman di perkotaan.</p> <!-- GANTI DESKRIPSI -->
                         </div>
-                    </div>
-                </section>
-
-                <!-- Section: Logistics -->
-                <section id="logistics">
-                    <h2 data-translate="logisticsTitle" style="display: none;">Logistics</h2>
-                    <div class="logistics-grid">
-                         <div class="date-time">
-                            <h3 data-translate="dateTimeTitle">Tanggal & Waktu</h3>
-                            <p data-translate="dateTimeDetail1"><strong>[Tanggal Mulai] - [Tanggal Selesai]</strong></p>
-                            <p data-translate="dateTimeDetail2">(Sabtu & Minggu)</p>
-                            <p data-translate="dateTimeDetail3">Pukul 08:00 - 15:00 WIB</p>
-                        </div>
-                        <div class="location">
-                            <h3 data-translate="locationTitle">Lokasi</h3>
-                            <p data-translate="locationDetail1"><strong>[Nama Tempat]</strong></p>
-                            <p data-translate="locationDetail2">[Alamat Lengkap Lokasi]</p>
-                            <p data-translate="locationDetail3">(Area luas dan aman untuk latihan)</p>
-                        </div>
-                    </div>
-                    <div class="investment">
-                       <p>
-                           <span data-translate="investmentLabel">Biaya Investasi:</span>
-                           <span data-translate="investmentPrice"><strong>[Sebutkan Harga]</strong> / Peserta</span>
-                       </p>
-                       <p data-translate="investmentIncludes">(Termasuk: Materi, Snack, Sertifikat Digital, Pendampingan Instruktur)</p>
                     </div>
                 </section>
 
@@ -127,17 +101,18 @@
                     <h2 data-translate="faqTitle">Pertanyaan Umum (FAQ)</h2>
                     <details>
                         <summary data-translate="faq1Question">Apakah saya perlu membawa sepeda sendiri?</summary>
-                        <p data-translate="faq1Answer">Ya, disarankan membawa sepeda pribadi agar terbiasa. Jika tidak punya, harap hubungi kami untuk opsi penyewaan (jika tersedia).</p>
+                        <p data-translate="faq1Answer">Ya, disarankan membawa sepeda pribadi agar terbiasa. Jika tidak punya, harap hubungi kami untuk opsi penyewaan (jika tersedia).</p> <!-- SESUAIKAN JAWABAN -->
                     </details>
                      <details>
                         <summary data-translate="faq2Question">Apakah klinik ini cocok untuk anak-anak?</summary>
-                        <p data-translate="faq2Answer">Klinik ini dirancang untuk [Sebutkan Target Usia, misal: dewasa dan remaja usia 15 tahun ke atas]. Untuk kelas anak-anak, silakan hubungi kami.</p>
+                        <p data-translate="faq2Answer">Klinik ini dirancang untuk [Sebutkan Target Usia, misal: dewasa dan remaja usia 15 tahun ke atas]. Untuk kelas anak-anak, silakan hubungi kami.</p> <!-- SESUAIKAN TARGET USIA & JAWABAN -->
                     </details>
+                     <!-- Tambahkan FAQ lain jika perlu -->
                 </section>
 
                  <!-- Final Call to Action Section (Inside main-content) -->
                 <section class="final-cta-section">
-                    <!-- Button style should match Hero CTA (Yellow/Amber) -->
+                    <!-- Button style matches Hero CTA (Yellow/Amber) -->
                     <button id="show-register-btn-footer" class="hero-cta" data-translate="registerNowFooter">Daftar Sekarang Juga!</button>
                 </section>
 
@@ -148,9 +123,39 @@
                 <!-- Back Button (Centered) -->
                 <button id="back-to-main-btn" class="back-button" data-translate="backButton">← Kembali</button>
 
-                <h2 data-translate="registrationTitle">Daftar Sekarang! Tempat Terbatas!</h2>
+                <!-- === SECTION LOGISTICS MOVED HERE === -->
+                <section id="logistics" class="logistics-in-form">
+                    <h2 data-translate="logisticsTitle" style="display: none;">Logistics</h2> <!-- Original title hidden -->
+                    <h3 data-translate="dateTimeTitle" style="text-align:center; margin-bottom:20px;">Detail Waktu & Tempat</h3> <!-- New Title -->
+                    <div class="logistics-grid">
+                         <div class="date-time">
+                            <!-- Original H3 removed -->
+                            <p data-translate="dateTimeDetail1"><strong>[Tanggal Mulai] - [Tanggal Selesai]</strong></p> <!-- GANTI TANGGAL -->
+                            <p data-translate="dateTimeDetail2">(Sabtu & Minggu)</p>
+                            <p data-translate="dateTimeDetail3">Pukul 08:00 - 15:00 WIB</p> <!-- SESUAIKAN WAKTU & ZONA -->
+                        </div>
+                        <div class="location">
+                            <!-- Original H3 removed -->
+                            <p data-translate="locationDetail1"><strong>[Nama Tempat]</strong></p> <!-- GANTI NAMA TEMPAT -->
+                            <p data-translate="locationDetail2">[Alamat Lengkap Lokasi]</p> <!-- GANTI ALAMAT -->
+                            <p data-translate="locationDetail3">(Area luas dan aman untuk latihan)</p>
+                        </div>
+                    </div>
+                    <div class="investment">
+                       <p>
+                           <span data-translate="investmentLabel">Biaya Investasi:</span>
+                           <span data-translate="investmentPrice"><strong>[Sebutkan Harga]</strong> / Peserta</span> <!-- GANTI HARGA -->
+                       </p>
+                       <p data-translate="investmentIncludes">(Termasuk: Materi, Snack, Sertifikat Digital, Pendampingan Instruktur)</p> <!-- SESUAIKAN YANG TERMASUK -->
+                    </div>
+                </section>
+                <!-- === END SECTION LOGISTICS === -->
+
+                <!-- Registration Form Title -->
+                <h2 data-translate="registrationTitle" style="margin-top: 40px;">Daftar Sekarang! Tempat Terbatas!</h2>
                 <p style="text-align: center; margin-bottom: 25px;" data-translate="registrationIntro">Amankan tempat Anda di Klinik Bersepeda Akhir Pekan ini. Isi formulir di bawah untuk mendaftar.</p>
 
+                <!-- The Form -->
                 <form action="#" method="POST"> <!-- GANTI action="#" dengan URL backend/layanan form Anda -->
                     <label for="nama" data-translate="formNameLabel">Nama Lengkap:</label>
                     <input type="text" id="nama" name="nama" required data-translate="formNamePlaceholder" placeholder="Masukkan nama lengkap Anda">
@@ -161,21 +166,23 @@
                     <label for="telepon" data-translate="formPhoneLabel">Nomor WhatsApp (Aktif):</label>
                     <input type="tel" id="telepon" name="telepon" required data-translate="formPhonePlaceholder" placeholder="cth: 081234567890">
 
+                    <!-- Tambahkan field lain jika perlu -->
+
                     <p class="disclaimer" data-translate="formDisclaimer">Dengan menekan tombol 'Daftar Sekarang', Anda setuju dengan Syarat & Ketentuan kami. Informasi pembayaran akan dikirimkan ke email Anda setelah pendaftaran.</p>
 
                     <!-- Form Submit Button (Blue) -->
                     <button type="submit" class="cta-button" data-translate="registerButton">Daftar Sekarang</button>
                     <p id="inactive-note" style="text-align:center; font-size:0.8em; margin-top:10px; color: #d32f2f;" data-translate="buttonInactiveNote">(Tombol ini belum aktif - Backend diperlukan)</p>
                 </form>
-            </section>
+            </section> <!-- End #registration-form -->
 
         </main>
     </div> <!-- End .container -->
 
     <!-- Footer -->
     <footer>
-        <p data-translate="footerCopyright">© 2024 [Nama Penyelenggara Anda]. Semua Hak Cipta Dilindungi.</p>
-        <p data-translate="footerContact">Ada pertanyaan? Hubungi kami di: <a href="mailto:[Email Anda]">[Email Anda]</a> atau WA: [Nomor Kontak Anda]</p>
+        <p data-translate="footerCopyright">© 2024 [Nama Penyelenggara Anda]. Semua Hak Cipta Dilindungi.</p> <!-- GANTI NAMA PENYELENGGARA -->
+        <p data-translate="footerContact">Ada pertanyaan? Hubungi kami di: <a href="mailto:[Email Anda]">[Email Anda]</a> atau WA: [Nomor Kontak Anda]</p> <!-- GANTI EMAIL & KONTAK -->
     </footer>
 
     <!-- Link JavaScript -->
