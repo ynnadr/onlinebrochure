@@ -6,19 +6,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const mainContent = document.getElementById('main-content');
     const registrationFormSection = document.getElementById('registration-form');
     const showRegisterTriggers = document.querySelectorAll('#trigger-register-view, #show-register-btn-header, #show-register-btn-footer');
-    // const backToMainBtn = document.getElementById('back-to-main-btn'); // Removed original button
     const container = document.querySelector('.container');
-    const heroOriginalContent = document.getElementById('hero-original-content'); // Wrapper for H1, P, Hero CTA
-    const heroBackBtn = document.getElementById('hero-back-btn'); // New back button in Hero
+    const heroRegisterBtn = document.getElementById('show-register-btn-header'); // Original Hero CTA
+    const heroBackBtnBottom = document.getElementById('hero-back-btn-bottom'); // New Back Button at bottom of Hero
 
     // DEBUG Checks
     if (!langSwitcher) console.error("ERROR: Language switcher element (.lang-switcher) not found!");
     if (!mainContent) console.error("ERROR: Main content element (#main-content) not found!");
     if (!registrationFormSection) console.error("ERROR: Registration form section (#registration-form) not found!");
     if (showRegisterTriggers.length === 0) console.warn("Warning: No registration trigger buttons found.");
-    // if (!backToMainBtn) console.warn("Warning: Original Back button (#back-to-main-btn) not found."); // No longer expected
-    if (!heroOriginalContent) console.error("ERROR: Hero original content wrapper (#hero-original-content) not found!");
-    if (!heroBackBtn) console.error("ERROR: Hero back button (#hero-back-btn) not found!");
+    if (!heroRegisterBtn) console.warn("Warning: Hero register button (#show-register-btn-header) not found.");
+    if (!heroBackBtnBottom) console.error("ERROR: Hero bottom back button (#hero-back-btn-bottom) not found!");
+
 
     let currentTranslations = {};
 
@@ -99,9 +98,9 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log("Showing registration form..."); // DEBUG
         if (mainContent) mainContent.style.display = 'none';
         if (registrationFormSection) registrationFormSection.style.display = 'block';
-        // Toggle Hero Content
-        if (heroOriginalContent) heroOriginalContent.classList.add('visually-hidden');
-        if (heroBackBtn) heroBackBtn.classList.remove('visually-hidden');
+        // Hide Original Hero CTA, Show Bottom Back Button
+        if (heroRegisterBtn) heroRegisterBtn.classList.add('visually-hidden');
+        if (heroBackBtnBottom) heroBackBtnBottom.classList.remove('visually-hidden');
 
         if (container) { window.scrollTo({ top: container.offsetTop - 20, behavior: 'smooth' }); }
         else { window.scrollTo({ top: 0, behavior: 'smooth'}); }
@@ -111,25 +110,25 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log("Showing main content..."); // DEBUG
         if (registrationFormSection) registrationFormSection.style.display = 'none';
         if (mainContent) mainContent.style.display = 'block';
-        // Toggle Hero Content
-        if (heroOriginalContent) heroOriginalContent.classList.remove('visually-hidden');
-        if (heroBackBtn) heroBackBtn.classList.add('visually-hidden');
+        // Show Original Hero CTA, Hide Bottom Back Button
+        if (heroRegisterBtn) heroRegisterBtn.classList.remove('visually-hidden');
+        if (heroBackBtnBottom) heroBackBtnBottom.classList.add('visually-hidden');
 
          if (container) { window.scrollTo({ top: container.offsetTop - 20, behavior: 'smooth' }); }
          else { window.scrollTo({ top: 0, behavior: 'smooth'}); }
     }
 
-    // Add listeners to all triggers
-    if (showRegisterTriggers.length > 0 && mainContent && registrationFormSection && heroOriginalContent && heroBackBtn) {
+    // Add listeners to all triggers for showing the form
+    if (showRegisterTriggers.length > 0 && mainContent && registrationFormSection && heroRegisterBtn && heroBackBtnBottom) {
         showRegisterTriggers.forEach(trigger => {
             trigger.addEventListener('click', showRegistrationForm);
         });
     } else { console.error("Missing elements needed for registration view triggers."); }
 
-    // Add listener for the NEW hero back button
-    if (heroBackBtn && mainContent && registrationFormSection && heroOriginalContent) {
-        heroBackBtn.addEventListener('click', showMainContent);
-    } else { console.error("Missing elements needed for hero back button listener."); }
+    // Add listener for the NEW bottom hero back button
+    if (heroBackBtnBottom && mainContent && registrationFormSection && heroRegisterBtn) {
+        heroBackBtnBottom.addEventListener('click', showMainContent);
+    } else { console.error("Missing elements needed for hero bottom back button listener."); }
 
     // --- Initial Load ---
     console.log("Determining initial language...");
@@ -140,8 +139,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Ensure initial view is correct
     if (mainContent) mainContent.style.display = 'block';
     if (registrationFormSection) registrationFormSection.style.display = 'none';
-    if (heroOriginalContent) heroOriginalContent.classList.remove('visually-hidden');
-    if (heroBackBtn) heroBackBtn.classList.add('visually-hidden');
+    if (heroRegisterBtn) heroRegisterBtn.classList.remove('visually-hidden'); // Show Hero CTA
+    if (heroBackBtnBottom) heroBackBtnBottom.classList.add('visually-hidden'); // Hide Back button
 
     console.log("Initial setup complete."); // DEBUG
 
