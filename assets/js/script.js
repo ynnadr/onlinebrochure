@@ -119,6 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Add listeners to all triggers for showing the form
+    // Ensure all elements are present before adding listeners
     if (showRegisterTriggers.length > 0 && mainContent && registrationFormSection && heroRegisterBtn && heroBackBtnBottom) {
         showRegisterTriggers.forEach(trigger => {
             trigger.addEventListener('click', showRegistrationForm);
@@ -126,9 +127,11 @@ document.addEventListener('DOMContentLoaded', () => {
     } else { console.error("Missing elements needed for registration view triggers."); }
 
     // Add listener for the NEW bottom hero back button
+    // Ensure all elements are present before adding listener
     if (heroBackBtnBottom && mainContent && registrationFormSection && heroRegisterBtn) {
         heroBackBtnBottom.addEventListener('click', showMainContent);
     } else { console.error("Missing elements needed for hero bottom back button listener."); }
+
 
     // --- Initial Load ---
     console.log("Determining initial language...");
