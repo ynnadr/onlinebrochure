@@ -1,165 +1,170 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const langSwitcher = document.querySelector('.lang-switcher');
-    let currentTranslations = {};
+    console.log("DOM fully loaded and parsed."); // DEBUG: Pastikan script jalan setelah DOM ready
 
-    // --- DOM Elements for Content Toggle ---
+    // --- Get DOM Elements (Check if they exist!) ---
+    const langSwitcher = document.querySelector('.lang-switcher');
     const mainContent = document.getElementById('main-content');
     const registrationFormSection = document.getElementById('registration-form');
     const showRegisterTriggers = document.querySelectorAll('#trigger-register-view, #show-register-btn-header, #show-register-btn-footer');
     const backToMainBtn = document.getElementById('back-to-main-btn');
-    const container = document.querySelector('.container'); // To scroll to top of container
+    const container = document.querySelector('.container');
+
+    // DEBUG: Check if essential elements were found
+    if (!langSwitcher) console.error("ERROR: Language switcher element (.lang-switcher) not found!");
+    if (!mainContent) console.error("ERROR: Main content element (#main-content) not found!");
+    if (!registrationFormSection) console.error("ERROR: Registration form section (#registration-form) not found!");
+    if (showRegisterTriggers.length === 0) console.warn("Warning: No registration trigger buttons found.");
+    if (!backToMainBtn) console.warn("Warning: Back button (#back-to-main-btn) not found.");
+
+    let currentTranslations = {};
 
     // --- Translation Functions ---
     async function fetchTranslations(lang) {
+        const url = `lang/${lang}.json`;
+        console.log(`Attempting to fetch translations from: ${url}`); // DEBUG
         try {
-            // DEBUG: Log the path being fetched
-            console.log(`Fetching translations from: lang/${lang}.json`);
-            const response = await fetch(`lang/${lang}.json`);
+            const response = await fetch(url);
+            console.log(`Fetch response status for ${url}: ${response.status}`); // DEBUG
             if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status} for lang/${lang}.json`);
+                throw new Error(`HTTP error! status: ${response.status}, statusText: ${response.statusText} while fetching ${url}`);
             }
-            return await response.json();
+             const contentType = response.headers.get("content-type");
+             if (!contentType || !contentType.includes("application/json")) {
+                console.warn(`Warning: Received content-type "${contentType}" instead of JSON for ${url}. Attempting to parse anyway.`);
+             }
+            const data = await response.json();
+            console.log(`Successfully parsed JSON for ${lang}`); // DEBUG
+            return data;
+
         } catch (error) {
-            console.error("Could not fetch translations:", error);
-            // Provide user feedback in case of fetch error
-            // alert(`Error loading language file for '${lang}'. Please check the console for details.`);
-            return {}; // Return empty object on error
+            console.error(`Could not fetch or parse translations for ${lang}:`, error);
+            return null; // Return null specifically on error
         }
     }
 
     function applyTranslations(translations) {
+        if (!translations || typeof translations !== 'object') {
+            console.error("ApplyTranslations called with invalid translations data:", translations);
+            return;
+        }
         console.log('Applying translations...'); // DEBUG
         currentTranslations = translations;
+        let appliedCount = 0;
+
         document.querySelectorAll('[data-translate]').forEach(element => {
             const key = element.getAttribute('data-translate');
-            if (translations[key] !== undefined) { // Check if key exists
-                // Handle different element types
+            if (translations.hasOwnProperty(key)) {
+                const translationValue = translations[key];
+                appliedCount++;
+
                 if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
-                    if(element.hasAttribute('placeholder')) {
-                        element.placeholder = translations[key];
-                    }
-                    // Could also update 'value' if needed, but usually placeholder is sufficient
+                    if(element.hasAttribute('placeholder')) element.placeholder = translationValue;
                 } else if (element.tagName === 'META' && element.getAttribute('name') === 'description') {
-                    element.content = translations[key];
+                    element.content = translationValue;
                 } else if (element.tagName === 'TITLE') {
-                     document.title = translations[key]; // Update page title
-                }
-                 else {
-                    // Use innerHTML carefully, assumes translation keys don't contain malicious script
-                    element.innerHTML = translations[key];
+                     document.title = translationValue;
+                } else {
+                    element.innerHTML = translationValue;
                 }
             } else {
-                 console.warn(`Translation key "${key}" not found in loaded language file.`); // Optional warning
+                 console.warn(`Translation key "${key}" not found in language file.`);
             }
         });
-
-        // Explicitly update elements not using data-translate if necessary
-        const inactiveButtonNote = document.getElementById('inactive-note');
-        if (inactiveButtonNote && translations['buttonInactiveNote']) {
-             inactiveButtonNote.textContent = translations['buttonInactiveNote'];
-        }
+        console.log(`Applied ${appliedCount} translations.`); // DEBUG
     }
 
     async function setLanguage(lang) {
-        console.log('Setting language to:', lang); // DEBUG
+        console.log(`---> Setting language to: ${lang}`); // DEBUG
         const translations = await fetchTranslations(lang);
-        // Check if fetch was successful and returned data
-        if (translations && Object.keys(translations).length > 0) {
-            console.log('Translations fetched successfully for', lang); // DEBUG
+
+        if (translations) {
+            console.log(`Translations object received for ${lang}, attempting to apply.`); // DEBUG
             applyTranslations(translations);
-            localStorage.setItem('preferredLang', lang); // Save preference
+            localStorage.setItem('preferredLang', lang);
 
-            // Update active button style
-            langSwitcher.querySelectorAll('button').forEach(btn => {
-                btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
-            });
-
-             // Update html lang attribute for accessibility/SEO
-             document.documentElement.lang = lang;
-
+            if (langSwitcher) {
+                langSwitcher.querySelectorAll('button').forEach(btn => {
+                    btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+                });
+            }
+            document.documentElement.lang = lang;
+            console.log(`---> Language successfully set to: ${lang}`); // DEBUG
         } else {
-             console.error(`Failed to load or apply translations for ${lang}. Check previous errors.`);
-             // Maybe show an error message to the user
+             console.error(`---> Failed to set language to ${lang} because translations could not be loaded or parsed. Check previous errors.`);
         }
     }
 
     // --- Event Listeners ---
-
-    // Language switcher clicks
     if (langSwitcher) {
         langSwitcher.addEventListener('click', (event) => {
-            if (event.target.tagName === 'BUTTON') {
+            if (event.target.tagName === 'BUTTON' && event.target.hasAttribute('data-lang')) {
                 const selectedLang = event.target.getAttribute('data-lang');
-                console.log('Language button clicked:', selectedLang); // DEBUG
-                // Check if the language is actually different before reloading
-                const currentLang = localStorage.getItem('preferredLang') || ((navigator.language.split('-')[0] === 'en') ? 'en' : 'id'); // Get current effective lang
-                if (selectedLang && selectedLang !== currentLang) {
+                console.log(`Language button "${selectedLang}" clicked.`); // DEBUG
+                 let currentLang = localStorage.getItem('preferredLang');
+                 if (!currentLang) {
+                    const browserLang = navigator.language ? navigator.language.split('-')[0] : 'id';
+                    currentLang = (browserLang === 'en') ? 'en' : 'id';
+                 }
+                if (selectedLang !== currentLang) {
                     setLanguage(selectedLang);
                 } else {
-                    console.log('Language already active or invalid.'); // DEBUG
+                    console.log(`Language "${selectedLang}" is already active.`); // DEBUG
                 }
             }
         });
-    } else {
-        console.error("Language switcher element not found!"); // DEBUG
     }
 
     // --- Content Toggle Logic ---
     function showRegistrationForm(event) {
-        if(event) event.preventDefault(); // Prevent default link behavior
-        console.log("Showing registration form..."); // DEBUG
+        if(event) event.preventDefault();
+        console.log("Showing registration form...");
         if (mainContent) mainContent.style.display = 'none';
         if (registrationFormSection) registrationFormSection.style.display = 'block';
         if (container) {
-             // Scroll slightly above the container top
              window.scrollTo({ top: container.offsetTop - 20, behavior: 'smooth' });
-        } else {
-            window.scrollTo({ top: 0, behavior: 'smooth'}); // Fallback scroll to top
-        }
+        } else { window.scrollTo({ top: 0, behavior: 'smooth'}); }
     }
 
     function showMainContent() {
-        console.log("Showing main content..."); // DEBUG
+        console.log("Showing main content...");
         if (registrationFormSection) registrationFormSection.style.display = 'none';
         if (mainContent) mainContent.style.display = 'block';
          if (container) {
             window.scrollTo({ top: container.offsetTop - 20, behavior: 'smooth' });
-         } else {
-             window.scrollTo({ top: 0, behavior: 'smooth'});
-         }
+         } else { window.scrollTo({ top: 0, behavior: 'smooth'}); }
     }
 
-    // Add listeners to all triggers
+    // Add listeners to all triggers (only if elements exist)
     if (showRegisterTriggers.length > 0 && mainContent && registrationFormSection) {
         showRegisterTriggers.forEach(trigger => {
             trigger.addEventListener('click', showRegistrationForm);
         });
-    } else {
-         console.error("Could not find all elements needed for content toggle (triggers, mainContent, registrationForm)."); // DEBUG
     }
 
-    // Add listener for the back button
+    // Add listener for the back button (only if elements exist)
     if (backToMainBtn && mainContent && registrationFormSection) {
         backToMainBtn.addEventListener('click', showMainContent);
-    } else {
-         console.error("Could not find back button or content elements."); // DEBUG
     }
 
     // --- Initial Load ---
+    console.log("Determining initial language..."); // DEBUG
     let initialLang = localStorage.getItem('preferredLang');
     if (!initialLang) {
-        const browserLang = navigator.language ? navigator.language.split('-')[0] : 'id'; // Safer check
-        initialLang = (browserLang === 'en') ? 'en' : 'id'; // Default to Indonesian
-        console.log('No preferred language found, defaulting based on browser/default:', initialLang); // DEBUG
+        const browserLang = navigator.language ? navigator.language.split('-')[0] : 'id';
+        initialLang = (browserLang === 'en') ? 'en' : 'id';
+        console.log(`No preferred language in localStorage, using browser/default: ${initialLang}`); // DEBUG
     } else {
-        console.log('Found preferred language in localStorage:', initialLang); // DEBUG
+        console.log(`Found preferred language in localStorage: ${initialLang}`); // DEBUG
     }
 
-    // Load initial translations
-    setLanguage(initialLang);
+    setLanguage(initialLang).catch(error => {
+         console.error("Error during initial language setting:", error);
+    });
 
-    // Ensure initial view is correct (redundant if CSS is correct, but safe)
+    // Ensure initial view is correct
     if (mainContent) mainContent.style.display = 'block';
     if (registrationFormSection) registrationFormSection.style.display = 'none';
+
+    console.log("Initial setup complete."); // DEBUG
 
 }); // End DOMContentLoaded
