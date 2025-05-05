@@ -11,7 +11,6 @@
 }
 
 html {
-    /* scroll-padding-top: 100px; /* REMOVED */
     scroll-behavior: smooth;
 }
 
@@ -53,9 +52,8 @@ h3 {
     padding: 5px 10px;
     border-radius: 5px;
     box-shadow: 0 1px 4px rgba(0,0,0,0.2);
-    z-index: 1100; /* Keep z-index high */
+    z-index: 1100;
 }
-/* ... (styles for lang-switcher buttons remain the same) ... */
 .lang-switcher button {
     background: none;
     border: none;
@@ -67,72 +65,53 @@ h3 {
     font-weight: bold;
     font-family: 'Lato', sans-serif;
 }
-
 .lang-switcher button.active {
     opacity: 1;
     color: #4CAF50;
     text-decoration: underline;
     text-underline-offset: 3px;
 }
-
 .lang-switcher button:not(.active):hover {
     opacity: 1;
     color: #1a7d1d;
 }
 
-
 /* --- Main Content Container --- */
 .container {
     max-width: 850px;
-    /* Revert margin to center container */
-    margin: 30px auto; /* Add top/bottom margin */
+    margin: 30px auto;
     background-color: #fff;
     box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-    /* Revert border-radius to apply to all corners */
     border-radius: 8px;
     overflow: hidden;
 }
 
 /* --- Header / Hero Section (Inside Container, Non-Sticky) --- */
 .hero {
-    /* REMOVED: position: sticky, top, z-index, width: 100%, box-shadow */
-    /* Revert background */
-    background-color: #4CAF50; /* Or your original solid color/gradient */
+    background-color: #4CAF50;
     color: #fff;
-    padding: 40px 30px; /* Adjust padding as needed */
+    padding: 40px 30px;
     text-align: center;
-    /* Remove min-height if not needed for solid background */
-    /* min-height: 350px; */
-    /* Remove flex centering if simple text-align is enough */
-    /* display: flex; flex-direction: column; justify-content: center; align-items: center; */
-    border-bottom: 1px solid #388E3C; /* Optional separator */
-    border-radius: 8px 8px 0 0; /* Optional: round top corners */
+    border-bottom: 1px solid #388E3C;
+    border-radius: 8px 8px 0 0;
 }
-
 .hero h1 {
     font-family: 'Poppins', sans-serif;
-    font-size: 2.8em; /* Adjust size */
+    font-size: 2.8em;
     font-weight: 700;
     margin-bottom: 10px;
     line-height: 1.2;
     color: #fff;
-    /* Remove text-shadow if background is solid and contrast is good */
-    /* text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8); */
 }
-
 .hero .tagline {
     font-family: 'Lato', sans-serif;
-    font-size: 1.3em; /* Adjust size */
+    font-size: 1.3em;
     font-weight: 400;
-    max-width: 600px; /* Adjust width */
-    margin: 0 auto 20px auto; /* Center tagline and add bottom margin */
+    max-width: 600px;
+    margin: 0 auto 20px auto;
     line-height: 1.5;
     color: #f0f0f0;
-    /* Remove text-shadow if not needed */
-    /* text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7); */
 }
-
-/* Style for the optional register button in header */
 .hero-cta {
     background-color: #FF9800;
     color: #fff;
@@ -140,24 +119,28 @@ h3 {
     padding: 10px 25px;
     font-size: 1.1em;
     cursor: pointer;
+    border-radius: 5px; /* Added radius */
+    font-family: 'Poppins', sans-serif; /* Match other buttons */
+    transition: background-color 0.3s ease; /* Added transition */
 }
 .hero-cta:hover {
      background-color: #f57c00;
 }
 
-
 /* --- Main Content & Registration Form Visibility --- */
 #main-content {
     display: block; /* Visible by default */
 }
-
+/* Style untuk Registration Form Section */
 #registration-form {
-    display: none; /* Hidden by default */
-    position: relative; /* Needed for absolute positioning of back button */
-    padding-top: 60px; /* Add space for the back button */
+    display: none; /* Hidden by default, JS toggles it */
+    position: relative;
+    padding: 60px 30px 40px 30px; /* Top Right Bottom Left */
+    background-color: #e8f5e9;
+    border-bottom: none;
 }
 
-/* Back Button Styling */
+/* --- Back Button Styling --- */
 .back-button {
     position: absolute;
     top: 20px;
@@ -166,73 +149,90 @@ h3 {
     border: 1px solid #aaa;
     color: #555;
     padding: 8px 15px;
-    border-radius: 20px; /* Pill shape */
+    border-radius: 20px;
     cursor: pointer;
     font-size: 0.9em;
     transition: background-color 0.2s, color 0.2s;
     font-family: 'Lato', sans-serif;
+    z-index: 5;
 }
-
 .back-button:hover {
     background-color: #e0e0e0;
     color: #333;
 }
 
-
 /* --- General Section Styling --- */
-/* ... (Styles for section, h2, h3, alternating backgrounds remain largely the same) ... */
 section {
     padding: 40px 30px;
     border-bottom: 1px solid #eee;
 }
-.container main section:nth-child(even) {
+#main-content section:nth-child(even) { /* Apply alternating to sections within main */
      background-color: #f8f9fa;
 }
-#registration-form { background-color: #e8f5e9; } /* Keep form background */
 #faq { background-color: #f8f9fa; }
-section:last-of-type { border-bottom: none; }
+#main-content section:last-of-type { border-bottom: none; } /* Apply to last section within main */
 
 /* --- Styling Specific Sections --- */
-/* ... (Styles for .benefits, .topics, .schedule, .instructors, .logistics, form fields, .cta-button, .cta-link, .faq remain the same as the previous version, adjust if needed) ... */
 
-/* Ensure .cta-link (like the one in About section) looks right */
-.cta-link {
-   display: inline-block;
-   background-color: transparent;
-   color: #FF9800;
-   padding: 12px 25px;
-   text-decoration: none;
-   border-radius: 5px;
-   font-weight: bold;
-   border: 2px solid #FF9800;
-   transition: background-color 0.3s ease, color 0.3s ease;
-   margin-top: 20px;
-   font-family: 'Poppins', sans-serif;
-   cursor: pointer; /* Make it clear it's clickable */
-}
-.cta-link:hover {
-    background-color: #FF9800;
-    color: #fff;
-}
-.center-cta {
-   text-align: center;
-   margin-top: 15px;
-}
+/* Lists (Benefits, Topics) */
+.benefits ul, .topics ul { list-style: none; padding-left: 0; margin-top: 10px; }
+.benefits li, .topics li { margin-bottom: 18px; padding-left: 30px; position: relative; font-size: 1.05em; }
+.benefits li::before, .topics li::before { content: '✔'; color: #4CAF50; position: absolute; left: 0; top: 2px; font-weight: bold; font-size: 1.2em; }
 
+/* Schedule List */
+.schedule ol { list-style: none; padding-left: 0; border-left: 3px solid #4CAF50; margin-left: 10px; }
+.schedule li { margin-bottom: 20px; padding-left: 25px; position: relative; }
+.schedule li::before { content: ''; position: absolute; left: -14px; top: 6px; width: 10px; height: 10px; background-color: #4CAF50; border-radius: 50%; border: 2px solid #fff; }
+.schedule li strong { color: #388E3C; }
+
+/* Instructors Section */
+.instructors .instructor-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-top: 20px; }
+.instructors .instructor { background-color: #fff; padding: 25px; border-radius: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.08); text-align: center; transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; border: 1px solid #eee; }
+.instructors .instructor:hover { transform: translateY(-5px); box-shadow: 0 6px 15px rgba(0,0,0,0.12); }
+.instructors .instructor img { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin-bottom: 15px; background-color: #ccc; border: 4px solid #e8f5e9; display: inline-block; }
+.instructors .instructor h4 { margin-bottom: 8px; font-size: 1.2em; color: #2c6e2e; }
+.instructors .instructor p { font-size: 0.95em; color: #555; line-height: 1.5; }
+
+/* Logistics Section */
+#logistics .logistics-grid { display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px; margin-bottom: 30px; }
+#logistics .date-time, #logistics .location { flex-basis: calc(50% - 20px); min-width: 250px; text-align: center; background-color: #fff; padding: 20px; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+#logistics p { font-size: 1.1em; margin-bottom: 5px; color: #444; }
+#logistics strong { display: block; margin-bottom: 8px; color: #333; font-size: 1.1em; }
+#logistics .investment { text-align: center; margin-top: 20px; padding: 15px; background-color: #fff; border-radius: 6px; border: 1px dashed #4CAF50; }
+#logistics .investment p:first-child { font-size: 1.2em; font-weight: bold; margin-bottom: 5px; color: #2c6e2e; }
+#logistics .investment p:last-child { font-size: 0.9em; color: #666; }
+
+
+/* --- Form Registration Styles (Repeated for clarity, ensure they are present) --- */
+#registration-form label { display: block; margin-bottom: 8px; font-weight: bold; font-size: 1em; color: #333; }
+#registration-form input[type="text"], #registration-form input[type="email"], #registration-form input[type="tel"] { width: 100%; padding: 14px; margin-bottom: 20px; border: 1px solid #ccc; border-radius: 5px; font-size: 1em; font-family: 'Lato', sans-serif; transition: border-color 0.2s, box-shadow 0.2s; }
+#registration-form input:focus { outline: none; border-color: #4CAF50; box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2); }
+#registration-form .disclaimer { font-size: 0.85em; color: #666; margin-bottom: 20px; text-align: center; line-height: 1.4; }
+#registration-form .cta-button { display: block; width: 100%; background-color: #FF9800; color: #fff; padding: 16px 20px; text-align: center; text-decoration: none; font-size: 1.4em; font-weight: 700; font-family: 'Poppins', sans-serif; border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease; text-transform: uppercase; letter-spacing: 0.5px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); margin-top: 10px; }
+#registration-form .cta-button:hover { background-color: #f57c00; transform: translateY(-3px); box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); }
+#registration-form .cta-button:active { transform: translateY(0px); box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15); }
+#registration-form #inactive-note { text-align: center; font-size: 0.8em; margin-top: 15px; color: #d32f2f; }
+
+
+/* --- CTA Link (Secondary Button) Styling --- */
+.cta-link { display: inline-block; background-color: transparent; color: #FF9800; padding: 12px 25px; text-decoration: none; border-radius: 5px; font-weight: bold; border: 2px solid #FF9800; transition: background-color 0.3s ease, color 0.3s ease; margin-top: 20px; font-family: 'Poppins', sans-serif; cursor: pointer; }
+.cta-link:hover { background-color: #FF9800; color: #fff; }
+.center-cta { text-align: center; margin-top: 15px; }
+
+
+/* --- FAQ Section Styling --- */
+#faq details { margin-bottom: 15px; background-color: #fff; border: 1px solid #e0e0e0; border-radius: 6px; padding: 15px 20px; transition: background-color 0.3s, box-shadow 0.2s; }
+#faq details:hover { background-color: #fdfdfd; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+#faq details[open] { background-color: #f8f9fa; border-left: 4px solid #4CAF50; padding-left: 17px; }
+#faq summary { font-weight: bold; font-size: 1.1em; color: #388E3C; cursor: pointer; outline: none; list-style: none; position: relative; padding-right: 25px; }
+#faq summary::-webkit-details-marker { display: none; }
+#faq summary::after { content: '+'; position: absolute; right: 5px; top: 50%; transform: translateY(-50%); font-size: 1.5em; font-weight: normal; color: #4CAF50; transition: transform 0.2s ease; }
+#faq details[open] summary::after { content: '−'; transform: translateY(-50%) rotate(180deg); }
+#faq details[open] summary { margin-bottom: 15px; color: #2c6e2e; }
+#faq details p { padding-left: 0; margin-top: 0; color: #555; line-height: 1.6; }
 
 /* --- Footer --- */
-/* ... (Footer styles remain the same) ... */
-footer {
-    text-align: center;
-    padding: 30px 20px;
-    font-size: 0.95em;
-    color: #666;
-    background-color: #e9ecef;
-    border-top: 1px solid #ddd;
-    /* Remove bottom radius if top of container isn't rounded */
-    /* border-bottom-left-radius: 8px; */
-    /* border-bottom-right-radius: 8px; */
-}
+footer { text-align: center; padding: 30px 20px; font-size: 0.95em; color: #666; background-color: #e9ecef; border-top: 1px solid #ddd; }
 footer p { margin-bottom: 8px; }
 footer p:last-child { margin-bottom: 0; }
 footer a { color: #FF9800; text-decoration: none; font-weight: bold; }
@@ -240,34 +240,40 @@ footer a:hover { text-decoration: underline; }
 
 
 /* --- Responsive Adjustments --- */
-/* ... (Most responsive styles should still apply, double check hero adjustments) ... */
-
-@media (max-width: 850px) {
-     .container {
-         max-width: 100%;
-         margin: 0; /* Remove margin */
-         border-radius: 0; /* Remove radius */
-         box-shadow: none;
-     }
-      .hero { border-radius: 0; } /* Remove radius */
-      footer { border-radius: 0; }
+@media (min-width: 768px) {
+    #main-content .benefits ul, #main-content .topics ul { column-count: 2; column-gap: 40px; } /* Target lists inside main */
+    #main-content .benefits li, #main-content .topics li { break-inside: avoid-column; }
 }
-
+@media (max-width: 850px) {
+     .container { max-width: 100%; margin: 0; border-radius: 0; box-shadow: none; }
+     .hero { border-radius: 0; }
+     footer { border-radius: 0; }
+}
 @media (max-width: 600px) {
-    /* Hero Adjustments */
     .hero { padding: 30px 20px; }
     .hero h1 { font-size: 2.2em; }
     .hero .tagline { font-size: 1.1em; max-width: 90%; }
     .hero-cta { font-size: 1em; padding: 8px 20px;}
-
     .back-button { top: 15px; left: 20px; padding: 6px 12px; font-size: 0.85em;}
-    #registration-form { padding-top: 55px; } /* Adjust padding for smaller back button */
-
-    /* ... (Other responsive styles remain the same) ... */
-     h2 { font-size: 1.7em; margin-bottom: 20px;}
-     h3 { font-size: 1.3em; }
-     section { padding: 30px 20px; }
-     /* ... etc ... */
-     .lang-switcher { top: 10px; right: 10px; padding: 3px 6px; }
-     .lang-switcher button { font-size: 0.8em; padding: 4px 6px; }
+    #registration-form { padding-top: 55px; padding-left: 20px; padding-right: 20px; }
+    h2 { font-size: 1.7em; margin-bottom: 20px;}
+    h3 { font-size: 1.3em; }
+    section { padding: 30px 20px; }
+    .benefits li, .topics li { font-size: 1em; padding-left: 25px; margin-bottom: 15px; }
+    .benefits li::before, .topics li::before { top: 0; font-size: 1.1em; }
+    .schedule ol { margin-left: 5px; }
+    .schedule li { padding-left: 20px; }
+    .schedule li::before { left: -13px; }
+    .instructors .instructor-grid { grid-template-columns: 1fr; gap: 20px;}
+    .instructors .instructor img { width: 100px; height: 100px; }
+    #logistics .logistics-grid { flex-direction: column; gap: 15px; }
+    #logistics .date-time, #logistics .location { flex-basis: 100%; padding: 15px;}
+    #registration-form input[type="text"], #registration-form input[type="email"], #registration-form input[type="tel"] { padding: 12px; margin-bottom: 15px; }
+    #registration-form .cta-button { font-size: 1.2em; padding: 14px 18px; }
+    .cta-link { padding: 10px 20px; font-size: 1em; /* Adjust size */ }
+    #faq details { padding: 12px 15px; }
+    #faq summary { font-size: 1em; padding-right: 20px;}
+    #faq summary::after { font-size: 1.3em; }
+    .lang-switcher { top: 10px; right: 10px; padding: 3px 6px; }
+    .lang-switcher button { font-size: 0.8em; padding: 4px 6px; }
 }
