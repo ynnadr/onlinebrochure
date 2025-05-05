@@ -4,176 +4,47 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@600;700&display=swap');
 
 /* --- Basic Reset & Global Settings --- */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    font-family: 'Lato', Arial, sans-serif;
-    line-height: 1.7;
-    color: #333;
-    background-color: #f4f4f4;
-}
-
-h1, h2, h3, h4, h5, h6 {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 700;
-    line-height: 1.3;
-    color: #2c6e2e;
-}
-
-h2 {
-    font-size: 1.9em;
-    color: #4CAF50;
-    margin-bottom: 25px;
-    text-align: center;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-h3 {
-    font-size: 1.4em;
-    margin-bottom: 15px;
-    color: #388E3C;
-}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Lato', Arial, sans-serif; line-height: 1.7; color: #333; background-color: #f4f4f4; }
+h1, h2, h3, h4, h5, h6 { font-family: 'Poppins', sans-serif; font-weight: 700; line-height: 1.3; color: #2c6e2e; }
+h2 { font-size: 1.9em; color: #4CAF50; margin-bottom: 25px; text-align: center; text-transform: uppercase; letter-spacing: 1px; }
+h3 { font-size: 1.4em; margin-bottom: 15px; color: #388E3C; }
 
 /* --- Language Switcher --- */
-.lang-switcher {
-    position: fixed;
-    top: 15px;
-    right: 15px;
-    background-color: rgba(255, 255, 255, 0.9);
-    padding: 5px 10px;
-    border-radius: 5px;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.2);
-    z-index: 1100;
-}
-.lang-switcher button {
-    background: none;
-    border: none;
-    padding: 5px 8px;
-    cursor: pointer;
-    font-size: 0.9em;
-    color: #333;
-    opacity: 0.7;
-    font-weight: bold;
-    font-family: 'Lato', sans-serif;
-}
-.lang-switcher button.active {
-    opacity: 1;
-    color: #4CAF50;
-    text-decoration: underline;
-    text-underline-offset: 3px;
-}
-.lang-switcher button:not(.active):hover {
-    opacity: 1;
-    color: #1a7d1d;
-}
+.lang-switcher { position: fixed; top: 15px; right: 15px; background-color: rgba(255, 255, 255, 0.9); padding: 5px 10px; border-radius: 5px; box-shadow: 0 1px 4px rgba(0,0,0,0.2); z-index: 1100; }
+.lang-switcher button { background: none; border: none; padding: 5px 8px; cursor: pointer; font-size: 0.9em; color: #333; opacity: 0.7; font-weight: bold; font-family: 'Lato', sans-serif; }
+.lang-switcher button.active { opacity: 1; color: #4CAF50; text-decoration: underline; text-underline-offset: 3px; }
+.lang-switcher button:not(.active):hover { opacity: 1; color: #1a7d1d; }
 
 /* --- Main Content Container --- */
-.container {
-    max-width: 850px;
-    margin: 30px auto;
-    background-color: #fff;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-    border-radius: 8px;
-    overflow: hidden;
-}
+.container { max-width: 850px; margin: 30px auto; background-color: #fff; box-shadow: 0 5px 20px rgba(0,0,0,0.1); border-radius: 8px; overflow: hidden; }
 
 /* --- Header / Hero Section (Inside Container, Non-Sticky) --- */
-.hero {
-    background-color: #4CAF50;
-    color: #fff;
-    padding: 40px 30px;
-    text-align: center;
-    border-bottom: 1px solid #388E3C;
-    border-radius: 8px 8px 0 0;
-}
-.hero h1 {
-    font-family: 'Poppins', sans-serif;
-    font-size: 2.8em;
-    font-weight: 700;
-    margin-bottom: 10px;
-    line-height: 1.2;
-    color: #fff;
-}
-.hero .tagline {
-    font-family: 'Lato', sans-serif;
-    font-size: 1.3em;
-    font-weight: 400;
-    max-width: 600px;
-    margin: 0 auto 20px auto;
-    line-height: 1.5;
-    color: #f0f0f0;
-}
-.hero-cta {
-    background-color: #FF9800;
-    color: #fff;
-    border: none;
-    padding: 10px 25px;
-    font-size: 1.1em;
-    cursor: pointer;
-    border-radius: 5px; /* Added radius */
-    font-family: 'Poppins', sans-serif; /* Match other buttons */
-    transition: background-color 0.3s ease; /* Added transition */
-}
-.hero-cta:hover {
-     background-color: #f57c00;
-}
+.hero { background-color: #4CAF50; color: #fff; padding: 40px 30px; text-align: center; border-bottom: 1px solid #388E3C; border-radius: 8px 8px 0 0; }
+.hero h1 { font-family: 'Poppins', sans-serif; font-size: 2.8em; font-weight: 700; margin-bottom: 10px; line-height: 1.2; color: #fff; }
+.hero .tagline { font-family: 'Lato', sans-serif; font-size: 1.3em; font-weight: 400; max-width: 600px; margin: 0 auto 20px auto; line-height: 1.5; color: #f0f0f0; }
+.hero-cta { background-color: #FF9800; color: #fff; border: none; padding: 10px 25px; font-size: 1.1em; cursor: pointer; border-radius: 5px; font-family: 'Poppins', sans-serif; transition: background-color 0.3s ease; }
+.hero-cta:hover { background-color: #f57c00; }
 
 /* --- Main Content & Registration Form Visibility --- */
-#main-content {
-    display: block; /* Visible by default */
-}
-/* Style untuk Registration Form Section */
-#registration-form {
-    display: none; /* Hidden by default, JS toggles it */
-    position: relative;
-    padding: 60px 30px 40px 30px; /* Top Right Bottom Left */
-    background-color: #e8f5e9;
-    border-bottom: none;
-}
+#main-content { display: block; }
+#registration-form { display: none; position: relative; padding: 60px 30px 40px 30px; background-color: #e8f5e9; border-bottom: none; }
 
 /* --- Back Button Styling --- */
-.back-button {
-    position: absolute;
-    top: 20px;
-    left: 30px;
-    background: none;
-    border: 1px solid #aaa;
-    color: #555;
-    padding: 8px 15px;
-    border-radius: 20px;
-    cursor: pointer;
-    font-size: 0.9em;
-    transition: background-color 0.2s, color 0.2s;
-    font-family: 'Lato', sans-serif;
-    z-index: 5;
-}
-.back-button:hover {
-    background-color: #e0e0e0;
-    color: #333;
-}
+.back-button { position: absolute; top: 20px; left: 30px; background: none; border: 1px solid #aaa; color: #555; padding: 8px 15px; border-radius: 20px; cursor: pointer; font-size: 0.9em; transition: background-color 0.2s, color 0.2s; font-family: 'Lato', sans-serif; z-index: 5; }
+.back-button:hover { background-color: #e0e0e0; color: #333; }
 
 /* --- General Section Styling --- */
-section {
-    padding: 40px 30px;
-    border-bottom: 1px solid #eee;
-}
-#main-content section:nth-child(even) { /* Apply alternating to sections within main */
-     background-color: #f8f9fa;
-}
-#faq { background-color: #f8f9fa; }
-#main-content section:last-of-type { border-bottom: none; } /* Apply to last section within main */
+section { padding: 40px 30px; border-bottom: 1px solid #eee; }
+#main-content section { border-bottom: 1px solid #eee; } /* Ensure border is applied within main */
+#main-content section:nth-child(odd) { background-color: #fff; } /* Apply alternating within main */
+#main-content section:nth-child(even) { background-color: #f8f9fa; }
+#main-content section:last-of-type { border-bottom: none; } /* Last section inside main-content */
+/* Override specific section backgrounds if needed within main */
+#main-content #faq { background-color: #f8f9fa; }
 
 /* --- Styling Specific Sections --- */
-
 /* Lists (Benefits, Topics) */
 .benefits ul, .topics ul { list-style: none; padding-left: 0; margin-top: 10px; }
 .benefits li, .topics li { margin-bottom: 18px; padding-left: 30px; position: relative; font-size: 1.05em; }
@@ -202,23 +73,26 @@ section {
 #logistics .investment p:first-child { font-size: 1.2em; font-weight: bold; margin-bottom: 5px; color: #2c6e2e; }
 #logistics .investment p:last-child { font-size: 0.9em; color: #666; }
 
-
-/* --- Form Registration Styles (Repeated for clarity, ensure they are present) --- */
+/* --- Form Registration Styles --- */
 #registration-form label { display: block; margin-bottom: 8px; font-weight: bold; font-size: 1em; color: #333; }
 #registration-form input[type="text"], #registration-form input[type="email"], #registration-form input[type="tel"] { width: 100%; padding: 14px; margin-bottom: 20px; border: 1px solid #ccc; border-radius: 5px; font-size: 1em; font-family: 'Lato', sans-serif; transition: border-color 0.2s, box-shadow 0.2s; }
 #registration-form input:focus { outline: none; border-color: #4CAF50; box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2); }
 #registration-form .disclaimer { font-size: 0.85em; color: #666; margin-bottom: 20px; text-align: center; line-height: 1.4; }
-#registration-form .cta-button { display: block; width: 100%; background-color: #FF9800; color: #fff; padding: 16px 20px; text-align: center; text-decoration: none; font-size: 1.4em; font-weight: 700; font-family: 'Poppins', sans-serif; border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease; text-transform: uppercase; letter-spacing: 0.5px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); margin-top: 10px; }
-#registration-form .cta-button:hover { background-color: #f57c00; transform: translateY(-3px); box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); }
+/* Main Submit button inside the form */
+#registration-form .cta-button { display: block; width: 100%; background-color: #1976D2; /* BIRU */ color: #fff; padding: 16px 20px; text-align: center; text-decoration: none; font-size: 1.4em; font-weight: 700; font-family: 'Poppins', sans-serif; border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease; text-transform: uppercase; letter-spacing: 0.5px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); margin-top: 10px; }
+#registration-form .cta-button:hover { background-color: #1565C0; /* BIRU Hover */ transform: translateY(-3px); box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); }
 #registration-form .cta-button:active { transform: translateY(0px); box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15); }
 #registration-form #inactive-note { text-align: center; font-size: 0.8em; margin-top: 15px; color: #d32f2f; }
 
-
-/* --- CTA Link (Secondary Button) Styling --- */
+/* --- CTA Link (Secondary Button - Orange Outline) Styling --- */
 .cta-link { display: inline-block; background-color: transparent; color: #FF9800; padding: 12px 25px; text-decoration: none; border-radius: 5px; font-weight: bold; border: 2px solid #FF9800; transition: background-color 0.3s ease, color 0.3s ease; margin-top: 20px; font-family: 'Poppins', sans-serif; cursor: pointer; }
 .cta-link:hover { background-color: #FF9800; color: #fff; }
 .center-cta { text-align: center; margin-top: 15px; }
 
+/* --- Final CTA Section Styling (After FAQ) --- */
+.final-cta-section { padding: 30px 30px 50px 30px; text-align: center; background-color: #f8f9fa; border-bottom: none; }
+.final-cta-section .cta-button { max-width: 350px; margin-left: auto; margin-right: auto; display: block; background-color: #1976D2; /* BIRU */ }
+.final-cta-section .cta-button:hover { background-color: #1565C0; /* BIRU Hover */ }
 
 /* --- FAQ Section Styling --- */
 #faq details { margin-bottom: 15px; background-color: #fff; border: 1px solid #e0e0e0; border-radius: 6px; padding: 15px 20px; transition: background-color 0.3s, box-shadow 0.2s; }
@@ -238,10 +112,9 @@ footer p:last-child { margin-bottom: 0; }
 footer a { color: #FF9800; text-decoration: none; font-weight: bold; }
 footer a:hover { text-decoration: underline; }
 
-
 /* --- Responsive Adjustments --- */
 @media (min-width: 768px) {
-    #main-content .benefits ul, #main-content .topics ul { column-count: 2; column-gap: 40px; } /* Target lists inside main */
+    #main-content .benefits ul, #main-content .topics ul { column-count: 2; column-gap: 40px; }
     #main-content .benefits li, #main-content .topics li { break-inside: avoid-column; }
 }
 @media (max-width: 850px) {
@@ -269,8 +142,9 @@ footer a:hover { text-decoration: underline; }
     #logistics .logistics-grid { flex-direction: column; gap: 15px; }
     #logistics .date-time, #logistics .location { flex-basis: 100%; padding: 15px;}
     #registration-form input[type="text"], #registration-form input[type="email"], #registration-form input[type="tel"] { padding: 12px; margin-bottom: 15px; }
-    #registration-form .cta-button { font-size: 1.2em; padding: 14px 18px; }
-    .cta-link { padding: 10px 20px; font-size: 1em; /* Adjust size */ }
+    #registration-form .cta-button { font-size: 1.2em; padding: 14px 18px; } /* Adjust form submit button */
+    .final-cta-section .cta-button { font-size: 1.2em; padding: 14px 18px; max-width: 90%;} /* Adjust final cta button */
+    .cta-link { padding: 10px 20px; font-size: 1em; }
     #faq details { padding: 12px 15px; }
     #faq summary { font-size: 1em; padding-right: 20px;}
     #faq summary::after { font-size: 1.3em; }
