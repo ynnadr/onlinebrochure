@@ -26,15 +26,16 @@
     <!-- Main Content Container -->
     <div class="container">
 
-        <!-- Header (Now INSIDE container, non-sticky) -->
+        <!-- Header (Inside container, Non-Sticky, Green BG) -->
         <header class="hero">
             <h1 data-translate="heroTitle">Klinik Bersepeda Akhir Pekan</h1>
             <p class="tagline" data-translate="heroTagline">Kuasai Dasar Bersepeda & Utamakan Keselamatan Bersama Ahlinya!</p>
-            <button id="show-register-btn-header" class="cta-link hero-cta" data-translate="registerNowNav">Daftar Sekarang</button>
+            <!-- Hero CTA Button (Yellow/Amber) -->
+            <button id="show-register-btn-header" class="hero-cta" data-translate="registerNowNav">Daftar Sekarang</button>
         </header>
 
         <main>
-            <!-- Wrapper for main content sections (will be hidden when form is shown) -->
+            <!-- Wrapper for main content sections (toggled by JS) -->
             <div id="main-content">
 
                 <!-- Section: Why Join -->
@@ -50,6 +51,7 @@
                         <li data-translate="benefit6">Suasana belajar yang santai, suportif, dan menyenangkan.</li>
                     </ul>
                     <div class="center-cta">
+                        <!-- Secondary CTA (Orange Outline), also triggers registration view -->
                         <a href="#" id="trigger-register-view" class="cta-link" data-translate="seeScheduleButton">Lihat Jadwal & Daftar!</a>
                     </div>
                 </section>
@@ -135,14 +137,17 @@
 
                  <!-- Final Call to Action Section (Inside main-content) -->
                 <section class="final-cta-section">
-                    <button id="show-register-btn-footer" class="cta-button" data-translate="registerNowFooter">Daftar Sekarang Juga!</button>
+                    <!-- Button style should match Hero CTA (Yellow/Amber) -->
+                    <button id="show-register-btn-footer" class="hero-cta" data-translate="registerNowFooter">Daftar Sekarang Juga!</button>
                 </section>
 
             </div> <!-- End #main-content -->
 
             <!-- Section: Registration Form (Initially Hidden) -->
             <section id="registration-form" style="display: none;">
+                <!-- Back Button (Centered) -->
                 <button id="back-to-main-btn" class="back-button" data-translate="backButton">← Kembali</button>
+
                 <h2 data-translate="registrationTitle">Daftar Sekarang! Tempat Terbatas!</h2>
                 <p style="text-align: center; margin-bottom: 25px;" data-translate="registrationIntro">Amankan tempat Anda di Klinik Bersepeda Akhir Pekan ini. Isi formulir di bawah untuk mendaftar.</p>
 
@@ -158,7 +163,7 @@
 
                     <p class="disclaimer" data-translate="formDisclaimer">Dengan menekan tombol 'Daftar Sekarang', Anda setuju dengan Syarat & Ketentuan kami. Informasi pembayaran akan dikirimkan ke email Anda setelah pendaftaran.</p>
 
-                    <!-- Tombol Submit Form (Warna Biru) -->
+                    <!-- Form Submit Button (Blue) -->
                     <button type="submit" class="cta-button" data-translate="registerButton">Daftar Sekarang</button>
                     <p id="inactive-note" style="text-align:center; font-size:0.8em; margin-top:10px; color: #d32f2f;" data-translate="buttonInactiveNote">(Tombol ini belum aktif - Backend diperlukan)</p>
                 </form>
