@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const showRegisterTriggers = document.querySelectorAll('#trigger-register-view, #show-register-btn-header, #show-register-btn-footer');
     const backToMainBtn = document.getElementById('back-to-main-btn');
     const container = document.querySelector('.container');
+    const heroRegisterBtn = document.getElementById('show-register-btn-header');
 
     // DEBUG: Check if essential elements were found
     if (!langSwitcher) console.error("ERROR: Language switcher element (.lang-switcher) not found!");
@@ -15,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!registrationFormSection) console.error("ERROR: Registration form section (#registration-form) not found!");
     if (showRegisterTriggers.length === 0) console.warn("Warning: No registration trigger buttons found.");
     if (!backToMainBtn) console.warn("Warning: Back button (#back-to-main-btn) not found.");
+    if (!heroRegisterBtn) console.warn("Warning: Hero register button (#show-register-btn-header) not found.");
 
     let currentTranslations = {};
 
@@ -120,6 +122,9 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log("Showing registration form...");
         if (mainContent) mainContent.style.display = 'none';
         if (registrationFormSection) registrationFormSection.style.display = 'block';
+        // Hide Hero CTA Button
+        if (heroRegisterBtn) heroRegisterBtn.classList.add('visually-hidden');
+
         if (container) {
              window.scrollTo({ top: container.offsetTop - 20, behavior: 'smooth' });
         } else { window.scrollTo({ top: 0, behavior: 'smooth'}); }
@@ -129,6 +134,9 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log("Showing main content...");
         if (registrationFormSection) registrationFormSection.style.display = 'none';
         if (mainContent) mainContent.style.display = 'block';
+        // Show Hero CTA Button
+        if (heroRegisterBtn) heroRegisterBtn.classList.remove('visually-hidden');
+
          if (container) {
             window.scrollTo({ top: container.offsetTop - 20, behavior: 'smooth' });
          } else { window.scrollTo({ top: 0, behavior: 'smooth'}); }
@@ -161,9 +169,10 @@ document.addEventListener('DOMContentLoaded', () => {
          console.error("Error during initial language setting:", error);
     });
 
-    // Ensure initial view is correct
+    // Ensure initial view is correct & Hero button is visible
     if (mainContent) mainContent.style.display = 'block';
     if (registrationFormSection) registrationFormSection.style.display = 'none';
+    if (heroRegisterBtn) heroRegisterBtn.classList.remove('visually-hidden'); // Ensure visible on load
 
     console.log("Initial setup complete."); // DEBUG
 
