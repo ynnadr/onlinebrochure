@@ -2,9 +2,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const langSwitcher = document.querySelector('.lang-switcher');
     let currentTranslations = {};
 
-    // --- Translation Functions ---
+    // --- DOM Elements for Content Toggle ---
+    const mainContent = document.getElementById('main-content');
+    const registrationFormSection = document.getElementById('registration-form');
+    const showRegisterTriggers = document.querySelectorAll('#trigger-register-view, #show-register-btn-header'); // Select both triggers
+    const backToMainBtn = document.getElementById('back-to-main-btn');
+    const container = document.querySelector('.container'); // To scroll to top of container
 
-    // Fetches the translation file
+    // --- Translation Functions (Keep as is) ---
     async function fetchTranslations(lang) {
         try {
             const response = await fetch(`lang/${lang}.json`);
@@ -14,18 +19,15 @@ document.addEventListener('DOMContentLoaded', () => {
             return await response.json();
         } catch (error) {
             console.error("Could not fetch translations:", error);
-            // Fallback or default language logic could go here
-            return {}; // Return empty object on error
+            return {};
         }
     }
 
-    // Applies the loaded translations to the page
     function applyTranslations(translations) {
-        currentTranslations = translations; // Store for potential reuse
+        currentTranslations = translations;
         document.querySelectorAll('[data-translate]').forEach(element => {
             const key = element.getAttribute('data-translate');
             if (translations[key]) {
-                // Handle different element types
                 if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
                     if(element.hasAttribute('placeholder')) {
                         element.placeholder = translations[key];
@@ -33,50 +35,48 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else if (element.tagName === 'META' && element.getAttribute('name') === 'description') {
                     element.content = translations[key];
                 } else if (element.tagName === 'TITLE') {
-                     document.title = translations[key]; // Update page title
+                     document.title = translations[key];
                 }
                  else {
-                    // Use innerHTML for keys that contain HTML tags (like strong, br)
-                     // Be cautious with innerHTML if translations come from untrusted sources
                     element.innerHTML = translations[key];
                 }
             } else {
-                console.warn(`Translation key "${key}" not found.`);
+                // console.warn(`Translation key "${key}" not found.`); // Optional warning
             }
         });
 
-        // Update elements without data-translate if needed (e.g. static text in JS)
-         const inactiveButtonNote = document.getElementById('inactive-note');
-         if (inactiveButtonNote && translations['buttonInactiveNote']) {
+        const inactiveButtonNote = document.getElementById('inactive-note');
+        if (inactiveButtonNote && translations['buttonInactiveNote']) {
              inactiveButtonNote.textContent = translations['buttonInactiveNote'];
-         }
+        }
+        // Add translation for Back button if needed in JSON:
+        // if(backToMainBtn && translations['backButton']) {
+        //     backToMainBtn.innerHTML = translations['backButton'];
+        // }
+        // Add translation for header register button if needed:
+        // const showRegBtnHeader = document.getElementById('show-register-btn-header');
+        // if(showRegBtnHeader && translations['registerNowNav']) {
+        //     showRegBtnHeader.innerHTML = translations['registerNowNav'];
+        // }
     }
 
-    // Sets the language, loads translations, and updates UI
     async function setLanguage(lang) {
         const translations = await fetchTranslations(lang);
         if (Object.keys(translations).length > 0) {
             applyTranslations(translations);
-            localStorage.setItem('preferredLang', lang); // Save preference
-
-            // Update active button style
+            localStorage.setItem('preferredLang', lang);
             langSwitcher.querySelectorAll('button').forEach(btn => {
                 btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
             });
-
-             // Update html lang attribute for accessibility/SEO
              document.documentElement.lang = lang;
-
         } else {
              console.error(`Failed to load translations for ${lang}.`);
-             // Maybe show an error message to the user
         }
-
     }
 
     // --- Event Listeners ---
 
-    // Language switcher clicks
+    // Language switcher clicks (Keep as is)
     if (langSwitcher) {
         langSwitcher.addEventListener('click', (event) => {
             if (event.target.tagName === 'BUTTON') {
@@ -88,22 +88,52 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- Initial Load ---
+    // --- Content Toggle Logic ---
 
-    // Determine initial language: 1st localStorage, 2nd browser pref (simple check), 3rd default 'id'
-    let initialLang = localStorage.getItem('preferredLang');
-    if (!initialLang) {
-        // Basic browser language check (might need refinement for variants like en-US)
-        const browserLang = navigator.language.split('-')[0];
-        if (browserLang === 'en') {
-             initialLang = 'en';
-        } else {
-             initialLang = 'id'; // Default to Indonesian
+    // Function to show Registration Form
+    function showRegistrationForm(event) {
+        if(event) event.preventDefault(); // Prevent default anchor behavior if triggered by link
+        if (mainContent) mainContent.style.display = 'none';
+        if (registrationFormSection) registrationFormSection.style.display = 'block';
+        // Scroll to the top of the container or form smoothly
+        if (container) {
+             // Scroll slightly above the container top for better view with potential browser UI
+             window.scrollTo({ top: container.offsetTop - 20, behavior: 'smooth' });
         }
     }
 
+    // Function to show Main Content
+    function showMainContent() {
+        if (registrationFormSection) registrationFormSection.style.display = 'none';
+        if (mainContent) mainContent.style.display = 'block';
+         // Scroll to the top of the container
+         if (container) {
+            window.scrollTo({ top: container.offsetTop - 20, behavior: 'smooth' });
+         }
+    }
 
-    // Load initial translations
+    // Add listeners to all triggers
+    if (showRegisterTriggers.length > 0 && mainContent && registrationFormSection) {
+        showRegisterTriggers.forEach(trigger => {
+            trigger.addEventListener('click', showRegistrationForm);
+        });
+    }
+
+    // Add listener for the back button
+    if (backToMainBtn && mainContent && registrationFormSection) {
+        backToMainBtn.addEventListener('click', showMainContent);
+    }
+
+
+    // --- Initial Load ---
+    let initialLang = localStorage.getItem('preferredLang');
+    if (!initialLang) {
+        const browserLang = navigator.language.split('-')[0];
+        initialLang = (browserLang === 'en') ? 'en' : 'id';
+    }
     setLanguage(initialLang);
+
+    // Ensure initial state is correct (though CSS handles this primarily)
+    // showMainContent(); // Not strictly needed if CSS default is correct
 
 }); // End DOMContentLoaded
