@@ -23,7 +23,7 @@ h3 { font-size: 1.4em; margin-bottom: 15px; color: #388E3C; }
 /* --- Header / Hero Section (with Background Image) --- */
 .hero {
     background:
-        linear-gradient(rgba(20, 60, 20, 0.6), rgba(0, 0, 0, 0.7)), /* Overlay */
+        linear-gradient(rgba(20, 60, 20, 0.4), rgba(0, 0, 0, 0.5)), /* Overlay */
         url('../../images/hero-bg.jpg') no-repeat center center/cover; /* CORRECTED PATH */
     color: #fff;
     padding: 60px 30px 30px 30px; /* Reduced bottom padding */
