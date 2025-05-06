@@ -26,7 +26,7 @@ h3 { font-size: 1.4em; margin-bottom: 15px; color: #388E3C; }
     /* background-color: #4CAF50; */
     /* Add Background Image and Overlay */
     background:
-        linear-gradient(rgba(20, 60, 20, 0.6), rgba(0, 0, 0, 0.7)), /* Dark Green/Black Overlay */
+        linear-gradient(rgba(20, 60, 20, 0.4), rgba(0, 0, 0, 0.5)), /* Dark Green/Black Overlay */
         url('../images/hero-bg.jpg') no-repeat center center/cover; /* GANTI PATH GAMBAR ANDA */
     color: #fff; /* Ensure text is white */
     padding: 60px 30px 40px 30px; /* Adjust padding if needed */
